@@ -1,0 +1,29 @@
+Stories:
+
+Timesheet
+* Add timesheet for given person and client
+* Remove timesheet by marking it as inactive
+* Modify timesheet details 
+* Export timesheet to Excel/Pdf
+* Search timesheets by criteria
+* Search timesheets by free text
+
+Activity
+* Add activity for Timesheet and related project
+* Modify activity
+* Remove activity
+* Search activities by criteria
+* Search activities by freetext
+
+Reports
+* Browse weekly reports 
+* Browse monthly reports
+* Browse yearly reports
+
+Projects
+* Manage projects
+
+Clients
+* Manage clients
+
+

@@ -54,12 +54,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Labs.Timesheets.Domain\Labs.Timesheets.Domain.csproj">
-      <Project>{ec7e9761-15d4-4113-b8ab-702598f501d3}</Project>
-      <Name>Labs.Timesheets.Domain</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Mappings\" />
   </ItemGroup>
   <ItemGroup>
