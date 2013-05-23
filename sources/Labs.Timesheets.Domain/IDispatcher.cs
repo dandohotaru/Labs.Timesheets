@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Labs.Timesheets.Contracts.Common.Commands;
 using Labs.Timesheets.Contracts.Common.Queries;
 
-namespace Labs.Timesheets.Domain.Core
+namespace Labs.Timesheets.Domain
 {
     public interface IDispatcher
     {

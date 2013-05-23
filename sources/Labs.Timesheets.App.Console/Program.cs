@@ -3,6 +3,7 @@ using CommonServiceLocator.NinjectAdapter;
 using Labs.Timesheets.Contracts.Common.Queries;
 using Labs.Timesheets.Contracts.Core.Commands;
 using Labs.Timesheets.Contracts.Core.Queries;
+using Labs.Timesheets.Domain;
 using Labs.Timesheets.Domain.Common.Adapters;
 using Labs.Timesheets.Domain.Core;
 using Labs.Timesheets.Storage.Mem.Contexts;

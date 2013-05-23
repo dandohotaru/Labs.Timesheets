@@ -8,7 +8,7 @@ using Labs.Timesheets.Contracts.Core.Queries;
 using Labs.Timesheets.Domain.Common.Adapters;
 using Labs.Timesheets.Domain.Core.Handlers;
 
-namespace Labs.Timesheets.Domain.Core
+namespace Labs.Timesheets.Domain
 {
     public class Dispatcher : IDispatcher
     {

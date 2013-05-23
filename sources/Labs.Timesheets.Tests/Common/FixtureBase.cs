@@ -1,5 +1,6 @@
 ﻿using System;
 using CommonServiceLocator.NinjectAdapter;
+using Labs.Timesheets.Domain;
 using Labs.Timesheets.Domain.Common.Adapters;
 using Labs.Timesheets.Domain.Core;
 using Labs.Timesheets.Storage.Mem.Contexts;

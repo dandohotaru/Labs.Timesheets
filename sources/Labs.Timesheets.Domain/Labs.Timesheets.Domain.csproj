@@ -54,12 +54,12 @@
     <Compile Include="Core\Entities\Project.cs" />
     <Compile Include="Core\Entities\Tag.cs" />
     <Compile Include="Core\Entities\Timesheet.cs" />
-    <Compile Include="Core\Dispatcher.cs" />
+    <Compile Include="Dispatcher.cs" />
     <Compile Include="Core\Handlers\TimesheetReadHandler.cs" />
     <Compile Include="Core\Handlers\ProjectWriteHandler.cs" />
     <Compile Include="Core\Handlers\ProjectReadHandler.cs" />
     <Compile Include="Core\Handlers\TimesheetWriteHandler.cs" />
-    <Compile Include="Core\IDispatcher.cs" />
+    <Compile Include="IDispatcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

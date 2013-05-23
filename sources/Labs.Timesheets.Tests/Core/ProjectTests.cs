@@ -5,6 +5,7 @@ using Labs.Timesheets.Contracts.Common.Commands;
 using Labs.Timesheets.Contracts.Common.Queries;
 using Labs.Timesheets.Contracts.Core.Commands;
 using Labs.Timesheets.Contracts.Core.Queries;
+using Labs.Timesheets.Domain;
 using Labs.Timesheets.Domain.Common.Extensions;
 using Labs.Timesheets.Domain.Core;
 using Labs.Timesheets.Tests.Common;
