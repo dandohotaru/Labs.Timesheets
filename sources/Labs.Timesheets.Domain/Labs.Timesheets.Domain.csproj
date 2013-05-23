@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EC7E9761-15D4-4113-B8AB-702598F501D3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Labs.Timesheets.Domain</RootNamespace>
+    <AssemblyName>Labs.Timesheets.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\Extensions\ListExtensions.cs" />
+    <Compile Include="Common\Extensions\ObjectExtensions.cs" />
+    <Compile Include="Common\Handlers\IWriteHandler.cs" />
+    <Compile Include="Common\Entities\EntityBase.cs" />
+    <Compile Include="Common\Entities\IEntity.cs" />
+    <Compile Include="Common\Exceptions\BusinessException.cs" />
+    <Compile Include="Common\Handlers\IReadHandler.cs" />
+    <Compile Include="Common\Adapters\IStorageAdapter.cs" />
+    <Compile Include="Core\Entities\Activity.cs" />
+    <Compile Include="Core\Entities\Customer.cs" />
+    <Compile Include="Core\Entities\Day.cs" />
+    <Compile Include="Core\Entities\Project.cs" />
+    <Compile Include="Core\Entities\Tag.cs" />
+    <Compile Include="Core\Entities\Timesheet.cs" />
+    <Compile Include="Core\Dispatcher.cs" />
+    <Compile Include="Core\Handlers\TimesheetReadHandler.cs" />
+    <Compile Include="Core\Handlers\ProjectWriteHandler.cs" />
+    <Compile Include="Core\Handlers\ProjectReadHandler.cs" />
+    <Compile Include="Core\Handlers\TimesheetWriteHandler.cs" />
+    <Compile Include="Core\IDispatcher.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Labs.Timesheets.Contracts\Labs.Timesheets.Contracts.csproj">
+      <Project>{cf48d77e-10da-4c70-8659-06c4b2796a9e}</Project>
+      <Name>Labs.Timesheets.Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

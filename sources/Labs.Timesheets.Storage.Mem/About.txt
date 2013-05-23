@@ -1,0 +1,3 @@
+﻿
+About
+* Local memory implementation of a storage adapter

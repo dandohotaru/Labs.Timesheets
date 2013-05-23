@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CF48D77E-10DA-4C70-8659-06C4B2796A9E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Labs.Timesheets.Contracts</RootNamespace>
+    <AssemblyName>Labs.Timesheets.Contracts</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\Commands\CommandBase.cs" />
+    <Compile Include="Common\Commands\ICommand.cs" />
+    <Compile Include="Common\Events\EventBase.cs" />
+    <Compile Include="Common\Events\IEvent.cs" />
+    <Compile Include="Common\Queries\Extensions.cs" />
+    <Compile Include="Common\Queries\IResult.cs" />
+    <Compile Include="Common\Queries\QueryBase.cs" />
+    <Compile Include="Common\Queries\IQuery.cs" />
+    <Compile Include="Common\Queries\ResultBase.cs" />
+    <Compile Include="Common\Models\IModel.cs" />
+    <Compile Include="Common\Values\Date.cs" />
+    <Compile Include="Common\Values\Time.cs" />
+    <Compile Include="Common\Values\IValue.cs" />
+    <Compile Include="Core\Commands\ModifyActivityCommand.cs" />
+    <Compile Include="Core\Commands\ModifyProjectCommand.cs" />
+    <Compile Include="Core\Commands\RemoveActivityCommand.cs" />
+    <Compile Include="Core\Commands\AddProjectCommand.cs" />
+    <Compile Include="Core\Commands\RemoveTimesheetCommand.cs" />
+    <Compile Include="Core\Commands\RemovedProjectCommand.cs" />
+    <Compile Include="Core\Commands\AddTimesheetCommand.cs" />
+    <Compile Include="Core\Commands\AddActivityCommand.cs" />
+    <Compile Include="Core\Events\ActivityAddedEvent.cs" />
+    <Compile Include="Core\Models\ActivityDetail.cs" />
+    <Compile Include="Core\Models\ProjectBrief.cs" />
+    <Compile Include="Core\Models\ProjectDetail.cs" />
+    <Compile Include="Core\Models\TimesheetDetail.cs" />
+    <Compile Include="Core\Queries\FindProjectsByIdsQuery.cs" />
+    <Compile Include="Core\Queries\FindTimesheetsByCriteriaQuery.cs" />
+    <Compile Include="Core\Queries\FindTimesheetsByTextQuery.cs" />
+    <Compile Include="Core\Queries\FindTimesheetByIdQuery.cs" />
+    <Compile Include="Core\Queries\FindProjectsByTextQuery.cs" />
+    <Compile Include="Common\Values\DateRange.cs" />
+    <Compile Include="Common\Values\TimeRange.cs" />
+    <Compile Include="Core\Models\TimesheetBrief.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Approvals\" />
+    <Folder Include="Reports\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
