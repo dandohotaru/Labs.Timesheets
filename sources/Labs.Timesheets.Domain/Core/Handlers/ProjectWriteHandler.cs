@@ -25,8 +25,8 @@ namespace Labs.Timesheets.Domain.Core.Handlers
                 throw new BusinessException("The provided project {0} already exists in data store.", command.ProjectId);
 
             project = new Project(command.ProjectId)
-                .ApplyName(command.ProjectName)
-                .ApplyNote(command.ProjectNote);
+                .ChangeName(command.ProjectName)
+                .ChangeNote(command.ProjectNote);
 
             Context.Add(project);
         }
@@ -47,8 +47,8 @@ namespace Labs.Timesheets.Domain.Core.Handlers
                 throw new BusinessException("The provided project {0} does not exists in data store.", command.ProjectId);
 
             project
-                .ApplyName(command.ProjectName)
-                .ApplyNote(command.ProjectNote);
+                .ChangeName(command.ProjectName)
+                .ChangeNote(command.ProjectNote);
 
             Context.Remove(project);
         }

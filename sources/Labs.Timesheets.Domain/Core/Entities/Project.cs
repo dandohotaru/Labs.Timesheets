@@ -13,13 +13,13 @@ namespace Labs.Timesheets.Domain.Core.Entities
 
         public string Notes { get; protected set; }
 
-        public Project ApplyName(string name)
+        public Project ChangeName(string name)
         {
             Name = name;
             return this;
         }
 
-        public Project ApplyNote(string note)
+        public Project ChangeNote(string note)
         {
             Notes = note;
             return this;
