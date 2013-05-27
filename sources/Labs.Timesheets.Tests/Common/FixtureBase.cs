@@ -13,8 +13,10 @@ namespace Labs.Timesheets.Tests.Common
     [TestFixture]
     public abstract class FixtureBase
     {
-        [SetUp]
-        public virtual void TestSetUp()
+        protected IDispatcher Dispatcher { get; set; }
+
+        [TestFixtureSetUp]
+        public virtual void FixtureSetUp()
         {
             var kernel = new StandardKernel();
             kernel.Bind<IStorageAdapter>().To<StorageAdapter>().InSingletonScope();
@@ -23,15 +25,17 @@ namespace Labs.Timesheets.Tests.Common
 
             var locator = new NinjectServiceLocator(kernel);
             ServiceLocator.SetLocatorProvider(() => locator);
+
+            Dispatcher = ServiceLocator.Current.GetInstance<IDispatcher>();
+        }
+
+        [SetUp]
+        public virtual void TestSetUp()
+        {
         }
 
         [TearDown]
         public virtual void TestTearDown()
-        {
-        }
-
-        [TestFixtureSetUp]
-        public virtual void FixtureSetUp()
         {
         }
 

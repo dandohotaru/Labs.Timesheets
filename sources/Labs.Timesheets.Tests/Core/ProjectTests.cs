@@ -5,11 +5,8 @@ using Labs.Timesheets.Contracts.Common.Commands;
 using Labs.Timesheets.Contracts.Common.Queries;
 using Labs.Timesheets.Contracts.Core.Commands;
 using Labs.Timesheets.Contracts.Core.Queries;
-using Labs.Timesheets.Domain;
 using Labs.Timesheets.Domain.Common.Extensions;
-using Labs.Timesheets.Domain.Core;
 using Labs.Timesheets.Tests.Common;
-using Microsoft.Practices.ServiceLocation;
 using NUnit.Framework;
 
 namespace Labs.Timesheets.Tests.Core
@@ -28,20 +25,19 @@ namespace Labs.Timesheets.Tests.Core
                                             ProjectName = "TestProject",
                                             ProjectNote = "Here be dragons",
                                         };
+            Dispatcher.Execute(addProjectCommand);
+
+            // When
             var removeProjectCommand = new RemovedProjectCommand
                                            {
                                                ProjectId = projectId,
                                            };
-
-            // When
-            var dispatcher = ServiceLocator.Current.GetInstance<IDispatcher>();
-            dispatcher.Execute(addProjectCommand);
-            dispatcher.Execute(removeProjectCommand);
+            Dispatcher.Execute(removeProjectCommand);
 
             // Then
             var findProjectByIdQuery = new FindProjectsByIdsQuery()
                 .AddProjectId(projectId);
-            var result = dispatcher
+            var result = Dispatcher
                 .Execute(findProjectByIdQuery)
                 .Return<FindProjectsByIdsResult>()
                 .SingleOrDefault();
@@ -59,14 +55,14 @@ namespace Labs.Timesheets.Tests.Core
                                             ProjectName = "TestProject",
                                             ProjectNote = "Here be dragons",
                                         };
+
             // When
-            var dispatcher = ServiceLocator.Current.GetInstance<IDispatcher>();
-            dispatcher.Execute(addProjectCommand);
+            Dispatcher.Execute(addProjectCommand);
 
             // Then l
             var findProjectByIdQuery = new FindProjectsByIdsQuery()
                 .AddProjectId(projectId);
-            var result = dispatcher
+            var result = Dispatcher
                 .Execute(findProjectByIdQuery)
                 .Return<FindProjectsByIdsResult>()
                 .Single();
@@ -92,14 +88,13 @@ namespace Labs.Timesheets.Tests.Core
                                    firstCommand,
                                    secondCommand,
                                };
-            var dispatcher = ServiceLocator.Current.GetInstance<IDispatcher>();
-            dispatcher.Execute(commands);
+            Dispatcher.Execute(commands);
 
             // Then 
             var findProjectByIdsQuery = new FindProjectsByIdsQuery()
                 .AddProjectId(firstCommand.ProjectId)
                 .AddProjectId(secondCommand.ProjectId);
-            var result = dispatcher
+            var result = Dispatcher
                 .Execute(findProjectByIdsQuery)
                 .Return<FindProjectsByIdsResult>();
             Assert.That(result, Is.Not.Null);
