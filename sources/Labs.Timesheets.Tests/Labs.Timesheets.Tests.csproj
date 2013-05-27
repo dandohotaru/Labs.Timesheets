@@ -74,6 +74,10 @@
       <Project>{cf48d77e-10da-4c70-8659-06c4b2796a9e}</Project>
       <Name>Labs.Timesheets.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Labs.Timesheets.Domain\Labs.Timesheets.Domain.csproj">
+      <Project>{ec7e9761-15d4-4113-b8ab-702598f501d3}</Project>
+      <Name>Labs.Timesheets.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Labs.Timesheets.Storage.Efw\Labs.Timesheets.Storage.Efw.csproj">
       <Project>{d90315bd-53d2-46eb-9c2d-211299e8d794}</Project>
       <Name>Labs.Timesheets.Storage.Efw</Name>
