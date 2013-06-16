@@ -43,12 +43,12 @@ namespace Labs.Timesheets.Domain
             }
         }
 
-        public IResult Execute(IQuery query)
+        public TResult Execute<TResult>(IQuery<TResult> query) where TResult : IResult
         {
             using (var context = ContextBuilder())
             {
                 var instance = (dynamic)this;
-                return instance.When((dynamic)query, context) as IResult;
+                return instance.When((dynamic)query, context);
             }
         }
 

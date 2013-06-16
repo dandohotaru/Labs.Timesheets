@@ -4,7 +4,7 @@ using Labs.Timesheets.Contracts.Core.Models;
 
 namespace Labs.Timesheets.Contracts.Core.Queries
 {
-    public class FindTimesheetByIdQuery : QueryBase
+    public class FindTimesheetByIdQuery : QueryBase<FindTimesheetByIdResult>
     {
         public Guid TimesheetId { get; set; }
     }

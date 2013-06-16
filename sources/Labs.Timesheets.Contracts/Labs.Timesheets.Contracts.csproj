@@ -43,7 +43,6 @@
     <Compile Include="Common\Commands\ICommand.cs" />
     <Compile Include="Common\Events\EventBase.cs" />
     <Compile Include="Common\Events\IEvent.cs" />
-    <Compile Include="Common\Queries\Extensions.cs" />
     <Compile Include="Common\Queries\IResult.cs" />
     <Compile Include="Common\Queries\QueryBase.cs" />
     <Compile Include="Common\Queries\IQuery.cs" />

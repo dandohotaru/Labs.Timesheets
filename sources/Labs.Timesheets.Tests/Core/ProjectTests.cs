@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Labs.Timesheets.Contracts.Common.Commands;
-using Labs.Timesheets.Contracts.Common.Queries;
 using Labs.Timesheets.Contracts.Core.Commands;
 using Labs.Timesheets.Contracts.Core.Queries;
 using Labs.Timesheets.Domain.Common.Extensions;
@@ -35,11 +34,10 @@ namespace Labs.Timesheets.Tests.Core
             Dispatcher.Execute(removeProjectCommand);
 
             // Then
-            var findProjectByIdQuery = new FindProjectsByIdsQuery()
+            var findProjectsByIdsQuery = new FindProjectsByIdsQuery()
                 .AddProjectId(projectId);
             var result = Dispatcher
-                .Execute(findProjectByIdQuery)
-                .Return<FindProjectsByIdsResult>()
+                .Execute(findProjectsByIdsQuery)
                 .SingleOrDefault();
             Assert.That(result, Is.Null);
         }
@@ -60,11 +58,10 @@ namespace Labs.Timesheets.Tests.Core
             Dispatcher.Execute(addProjectCommand);
 
             // Then l
-            var findProjectByIdQuery = new FindProjectsByIdsQuery()
+            var findProjectsByIdsQuery = new FindProjectsByIdsQuery()
                 .AddProjectId(projectId);
             var result = Dispatcher
-                .Execute(findProjectByIdQuery)
-                .Return<FindProjectsByIdsResult>()
+                .Execute(findProjectsByIdsQuery)
                 .Single();
             Assert.That(result.ProjectId, Is.EqualTo(projectId));
         }
@@ -95,8 +92,7 @@ namespace Labs.Timesheets.Tests.Core
                 .AddProjectId(firstCommand.ProjectId)
                 .AddProjectId(secondCommand.ProjectId);
             var result = Dispatcher
-                .Execute(findProjectByIdsQuery)
-                .Return<FindProjectsByIdsResult>();
+                .Execute(findProjectByIdsQuery);
             Assert.That(result, Is.Not.Null);
             Assert.That(result.Projects, Is.Not.Null);
             Assert.That(result.Projects.Count, Is.EqualTo(1));

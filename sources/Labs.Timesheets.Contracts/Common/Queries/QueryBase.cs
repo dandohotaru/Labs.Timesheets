@@ -3,6 +3,12 @@
 namespace Labs.Timesheets.Contracts.Common.Queries
 {
     [Serializable]
+    public abstract class QueryBase<TResult> : QueryBase, IQuery<TResult>
+        where TResult : IResult
+    {
+    }
+
+    [Serializable]
     public abstract class QueryBase : IQuery
     {
         protected QueryBase()

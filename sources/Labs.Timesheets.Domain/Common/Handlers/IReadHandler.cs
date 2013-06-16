@@ -3,7 +3,7 @@
 namespace Labs.Timesheets.Domain.Common.Handlers
 {
     public interface IReadHandler<in TQuery, out TResult>
-        where TQuery : IQuery
+        where TQuery : IQuery<TResult>
         where TResult : IResult
     {
         TResult Handle(TQuery query);

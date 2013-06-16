@@ -5,7 +5,7 @@ using Labs.Timesheets.Contracts.Core.Models;
 
 namespace Labs.Timesheets.Contracts.Core.Queries
 {
-    public class FindProjectsByTextQuery : QueryBase
+    public class FindProjectsByTextQuery : QueryBase<FindProjectsByTextResult>
     {
         public string SearchText { get; set; }
     }

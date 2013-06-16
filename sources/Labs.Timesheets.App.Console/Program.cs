@@ -1,11 +1,9 @@
 ﻿using System;
 using CommonServiceLocator.NinjectAdapter;
-using Labs.Timesheets.Contracts.Common.Queries;
 using Labs.Timesheets.Contracts.Core.Commands;
 using Labs.Timesheets.Contracts.Core.Queries;
 using Labs.Timesheets.Domain;
 using Labs.Timesheets.Domain.Common.Adapters;
-using Labs.Timesheets.Domain.Core;
 using Labs.Timesheets.Storage.Mem.Contexts;
 using Microsoft.Practices.ServiceLocation;
 using Ninject;
@@ -48,8 +46,7 @@ namespace Labs.Timesheets.App.Console
             var findProjectQuery = new FindProjectsByIdsQuery()
                 .AddProjectId(projectId);
             var project = dispatcher
-                .Execute(findProjectQuery)
-                .Return<FindProjectsByIdsResult>();
+                .Execute(findProjectQuery);
             if (project == null)
                 throw new Exception("The project could not be found based on id");
         }

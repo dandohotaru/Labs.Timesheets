@@ -10,6 +10,6 @@ namespace Labs.Timesheets.Domain
 
         void Execute(IEnumerable<ICommand> commands);
 
-        IResult Execute(IQuery query);
+        TResult Execute<TResult>(IQuery<TResult> query) where TResult : IResult;
     }
 }

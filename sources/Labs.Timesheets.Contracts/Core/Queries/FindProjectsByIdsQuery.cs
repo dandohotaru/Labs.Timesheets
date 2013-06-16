@@ -6,7 +6,7 @@ using Labs.Timesheets.Contracts.Core.Models;
 
 namespace Labs.Timesheets.Contracts.Core.Queries
 {
-    public class FindProjectsByIdsQuery : QueryBase
+    public class FindProjectsByIdsQuery : QueryBase<FindProjectsByIdsResult>
     {
         public List<Guid> ProjectIds { get; private set; }
 
