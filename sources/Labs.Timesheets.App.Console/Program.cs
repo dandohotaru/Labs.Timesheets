@@ -1,9 +1,10 @@
 ﻿using System;
 using CommonServiceLocator.NinjectAdapter;
-using Labs.Timesheets.Contracts.Core.Commands;
-using Labs.Timesheets.Contracts.Core.Queries;
+using Labs.Timesheets.Contracts.Tracking.Commands;
+using Labs.Timesheets.Contracts.Tracking.Queries;
 using Labs.Timesheets.Domain;
 using Labs.Timesheets.Domain.Common.Adapters;
+using Labs.Timesheets.Reports;
 using Labs.Timesheets.Storage.Mem.Contexts;
 using Microsoft.Practices.ServiceLocation;
 using Ninject;

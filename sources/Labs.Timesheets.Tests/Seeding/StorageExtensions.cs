@@ -1,6 +1,6 @@
 ﻿using System;
 using Labs.Timesheets.Domain.Common.Adapters;
-using Labs.Timesheets.Domain.Core.Entities;
+using Labs.Timesheets.Domain.Tracking.Entities;
 
 namespace Labs.Timesheets.Tests.Seeding
 {

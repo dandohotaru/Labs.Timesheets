@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CF48D77E-10DA-4C70-8659-06C4B2796A9E}</ProjectGuid>
+    <ProjectGuid>{8DF4EC9D-FD36-4411-BB83-372A3C1EE4E3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Labs.Timesheets.Contracts</RootNamespace>
-    <AssemblyName>Labs.Timesheets.Contracts</AssemblyName>
+    <RootNamespace>Labs.Timesheets.Common</RootNamespace>
+    <AssemblyName>Labs.Timesheets.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,42 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Commands\CommandBase.cs" />
-    <Compile Include="Common\Commands\ICommand.cs" />
-    <Compile Include="Common\Events\EventBase.cs" />
-    <Compile Include="Common\Events\IEvent.cs" />
-    <Compile Include="Common\Queries\IResult.cs" />
-    <Compile Include="Common\Queries\QueryBase.cs" />
-    <Compile Include="Common\Queries\IQuery.cs" />
-    <Compile Include="Common\Queries\ResultBase.cs" />
-    <Compile Include="Common\Values\Date.cs" />
-    <Compile Include="Common\Values\Time.cs" />
-    <Compile Include="Common\Values\IValue.cs" />
-    <Compile Include="Tracking\Commands\ModifyActivityCommand.cs" />
-    <Compile Include="Tracking\Commands\ModifyProjectCommand.cs" />
-    <Compile Include="Tracking\Commands\RemoveActivityCommand.cs" />
-    <Compile Include="Tracking\Commands\AddProjectCommand.cs" />
-    <Compile Include="Tracking\Commands\RemoveTimesheetCommand.cs" />
-    <Compile Include="Tracking\Commands\RemovedProjectCommand.cs" />
-    <Compile Include="Tracking\Commands\AddTimesheetCommand.cs" />
-    <Compile Include="Tracking\Commands\AddActivityCommand.cs" />
-    <Compile Include="Tracking\Events\ActivityAddedEvent.cs" />
-    <Compile Include="Tracking\Models\ActivityDetail.cs" />
-    <Compile Include="Tracking\Models\ProjectBrief.cs" />
-    <Compile Include="Tracking\Models\ProjectDetail.cs" />
-    <Compile Include="Tracking\Models\TimesheetDetail.cs" />
-    <Compile Include="Tracking\Queries\FindProjectsByIdsQuery.cs" />
-    <Compile Include="Tracking\Queries\FindTimesheetsByCriteriaQuery.cs" />
-    <Compile Include="Tracking\Queries\FindTimesheetsByTextQuery.cs" />
-    <Compile Include="Tracking\Queries\FindTimesheetByIdQuery.cs" />
-    <Compile Include="Tracking\Queries\FindProjectsByTextQuery.cs" />
-    <Compile Include="Common\Values\DateRange.cs" />
-    <Compile Include="Common\Values\TimeRange.cs" />
-    <Compile Include="Tracking\Models\TimesheetBrief.cs" />
+    <Compile Include="Extensions\ListExtensions.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Approvals\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

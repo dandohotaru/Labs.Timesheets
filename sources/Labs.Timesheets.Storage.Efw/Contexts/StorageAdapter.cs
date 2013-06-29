@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using Labs.Timesheets.Domain.Common.Adapters;
 using Labs.Timesheets.Domain.Common.Entities;
-using Labs.Timesheets.Domain.Core.Entities;
+using Labs.Timesheets.Domain.Tracking.Entities;
 
 namespace Labs.Timesheets.Storage.Efw.Contexts
 {

@@ -60,6 +60,10 @@
     <Content Include="About.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Labs.Timesheets.Common\Labs.Timesheets.Common.csproj">
+      <Project>{8df4ec9d-fd36-4411-bb83-372a3c1ee4e3}</Project>
+      <Name>Labs.Timesheets.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Labs.Timesheets.Contracts\Labs.Timesheets.Contracts.csproj">
       <Project>{cf48d77e-10da-4c70-8659-06c4b2796a9e}</Project>
       <Name>Labs.Timesheets.Contracts</Name>

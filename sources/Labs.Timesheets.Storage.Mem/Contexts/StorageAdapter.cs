@@ -31,7 +31,7 @@ namespace Labs.Timesheets.Storage.Mem.Contexts
         public void Add<TEntity>(TEntity entity) where TEntity : class, IEntity
         {
             if (Instance.ContainsKey(entity.Id))
-                throw new BusinessException("The provided {0} id ({1}) already exists in the data store.", typeof (TEntity).Name, entity.Id);
+                throw new StorageException("The provided {0} id ({1}) already exists in the data store.", typeof (TEntity).Name, entity.Id);
             Instance.Add(entity.Id, entity);
         }
 
@@ -46,7 +46,7 @@ namespace Labs.Timesheets.Storage.Mem.Contexts
         public void Remove<TEntity>(TEntity entity) where TEntity : class, IEntity
         {
             if (!Instance.ContainsKey(entity.Id))
-                throw new BusinessException("The provided {0} id ({1}) does not exist in the data store.", typeof (TEntity).Name, entity.Id);
+                throw new StorageException("The provided {0} id ({1}) does not exist in the data store.", typeof (TEntity).Name, entity.Id);
             Instance.Remove(entity.Id);
         }
 

@@ -2,6 +2,7 @@
 using CommonServiceLocator.NinjectAdapter;
 using Labs.Timesheets.Domain;
 using Labs.Timesheets.Domain.Common.Adapters;
+using Labs.Timesheets.Reports;
 using Labs.Timesheets.Storage.Mem.Contexts;
 using Microsoft.Practices.ServiceLocation;
 using NUnit.Framework;

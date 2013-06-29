@@ -40,32 +40,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Extensions\ListExtensions.cs" />
-    <Compile Include="Common\Extensions\ObjectExtensions.cs" />
-    <Compile Include="Common\Handlers\IWriteHandler.cs" />
-    <Compile Include="Common\Entities\EntityBase.cs" />
     <Compile Include="Common\Entities\IEntity.cs" />
     <Compile Include="Common\Exceptions\BusinessException.cs" />
-    <Compile Include="Common\Handlers\IReadHandler.cs" />
+    <Compile Include="Common\Exceptions\StorageException.cs" />
+    <Compile Include="Common\Handlers\IWriteHandler.cs" />
+    <Compile Include="Common\Entities\EntityBase.cs" />
     <Compile Include="Common\Adapters\IStorageAdapter.cs" />
-    <Compile Include="Core\Entities\Activity.cs" />
-    <Compile Include="Core\Entities\Customer.cs" />
-    <Compile Include="Core\Entities\Day.cs" />
-    <Compile Include="Core\Entities\Project.cs" />
-    <Compile Include="Core\Entities\Tag.cs" />
-    <Compile Include="Core\Entities\Timesheet.cs" />
-    <Compile Include="IReader.cs" />
-    <Compile Include="Reader.cs" />
+    <Compile Include="Tracking\Entities\Activity.cs" />
+    <Compile Include="Tracking\Entities\Customer.cs" />
+    <Compile Include="Tracking\Entities\Day.cs" />
+    <Compile Include="Tracking\Entities\Project.cs" />
+    <Compile Include="Tracking\Entities\Tag.cs" />
+    <Compile Include="Tracking\Entities\Timesheet.cs" />
     <Compile Include="Writer.cs" />
-    <Compile Include="Core\Handlers\TimesheetReadHandler.cs" />
-    <Compile Include="Core\Handlers\ProjectWriteHandler.cs" />
-    <Compile Include="Core\Handlers\ProjectReadHandler.cs" />
-    <Compile Include="Core\Handlers\TimesheetWriteHandler.cs" />
+    <Compile Include="Tracking\Handlers\ProjectWriteHandler.cs" />
+    <Compile Include="Tracking\Handlers\TimesheetWriteHandler.cs" />
     <Compile Include="IWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\Labs.Timesheets.Common\Labs.Timesheets.Common.csproj">
+      <Project>{8df4ec9d-fd36-4411-bb83-372a3c1ee4e3}</Project>
+      <Name>Labs.Timesheets.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Labs.Timesheets.Contracts\Labs.Timesheets.Contracts.csproj">
       <Project>{cf48d77e-10da-4c70-8659-06c4b2796a9e}</Project>
       <Name>Labs.Timesheets.Contracts</Name>

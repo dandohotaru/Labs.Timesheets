@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Labs.Timesheets.Contracts.Common.Commands;
 using Labs.Timesheets.Contracts.Common.Queries;
-using Labs.Timesheets.Contracts.Core.Commands;
-using Labs.Timesheets.Contracts.Core.Queries;
+using Labs.Timesheets.Contracts.Tracking.Commands;
 using Labs.Timesheets.Domain.Common.Adapters;
-using Labs.Timesheets.Domain.Core.Handlers;
+using Labs.Timesheets.Domain.Tracking.Handlers;
 
 namespace Labs.Timesheets.Domain
 {
@@ -65,16 +64,6 @@ namespace Labs.Timesheets.Domain
         public void When(RemovedProjectCommand command, IStorageAdapter context)
         {
             new ProjectWriteHandler(context).Handle(command);
-        }
-
-        public FindProjectsByIdsResult When(FindProjectsByIdsQuery query, IStorageAdapter context)
-        {
-            return new ProjectReadHandler(context).Handle(query);
-        }
-
-        public FindProjectsByTextResult When(FindProjectsByTextQuery query, IStorageAdapter context)
-        {
-            return new ProjectReadHandler(context).Handle(query);
         }
     }
 }
