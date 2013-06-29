@@ -1,9 +1,9 @@
 ﻿using System.Linq;
-using Labs.Timesheets.Contracts.Tracking.Models;
-using Labs.Timesheets.Contracts.Tracking.Queries;
 using Labs.Timesheets.Domain.Common.Adapters;
 using Labs.Timesheets.Domain.Tracking.Entities;
 using Labs.Timesheets.Reports.Common.Handlers;
+using Labs.Timesheets.Reports.Tracking.Models;
+using Labs.Timesheets.Reports.Tracking.Queries;
 
 namespace Labs.Timesheets.Reports.Tracking.Handlers
 {

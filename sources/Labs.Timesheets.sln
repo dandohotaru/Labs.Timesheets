@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labs.Timesheets.Contracts", "Labs.Timesheets.Contracts\Labs.Timesheets.Contracts.csproj", "{CF48D77E-10DA-4C70-8659-06C4B2796A9E}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{429B1F86-00BB-40CF-B0AD-D811B909A6F9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Adapters", "Adapters", "{DCDDDFCF-4636-4B96-855C-FCE1B693763B}"
@@ -33,10 +31,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CF48D77E-10DA-4C70-8659-06C4B2796A9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CF48D77E-10DA-4C70-8659-06C4B2796A9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CF48D77E-10DA-4C70-8659-06C4B2796A9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CF48D77E-10DA-4C70-8659-06C4B2796A9E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{36059F0B-BDC9-4DFF-8D1C-90B52E25C89E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{36059F0B-BDC9-4DFF-8D1C-90B52E25C89E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36059F0B-BDC9-4DFF-8D1C-90B52E25C89E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -74,7 +68,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{CF48D77E-10DA-4C70-8659-06C4B2796A9E} = {429B1F86-00BB-40CF-B0AD-D811B909A6F9}
 		{EC7E9761-15D4-4113-B8AB-702598F501D3} = {429B1F86-00BB-40CF-B0AD-D811B909A6F9}
 		{DFB0E46D-2FE8-48A0-8324-EA0018E19C7A} = {429B1F86-00BB-40CF-B0AD-D811B909A6F9}
 		{8DF4EC9D-FD36-4411-BB83-372A3C1EE4E3} = {429B1F86-00BB-40CF-B0AD-D811B909A6F9}

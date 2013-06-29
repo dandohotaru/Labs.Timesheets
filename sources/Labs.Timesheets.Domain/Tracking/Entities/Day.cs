@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Labs.Timesheets.Contracts.Common.Values;
 using Labs.Timesheets.Domain.Common.Entities;
 using Labs.Timesheets.Domain.Common.Exceptions;
+using Labs.Timesheets.Domain.Common.Values;
 
 namespace Labs.Timesheets.Domain.Tracking.Entities
 {

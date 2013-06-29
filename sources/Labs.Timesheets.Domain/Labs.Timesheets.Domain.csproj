@@ -40,18 +40,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Commands\CommandBase.cs" />
+    <Compile Include="Common\Commands\ICommand.cs" />
     <Compile Include="Common\Entities\IEntity.cs" />
+    <Compile Include="Common\Events\EventBase.cs" />
+    <Compile Include="Common\Events\IEvent.cs" />
     <Compile Include="Common\Exceptions\BusinessException.cs" />
     <Compile Include="Common\Exceptions\StorageException.cs" />
     <Compile Include="Common\Handlers\IWriteHandler.cs" />
     <Compile Include="Common\Entities\EntityBase.cs" />
     <Compile Include="Common\Adapters\IStorageAdapter.cs" />
+    <Compile Include="Common\Values\Date.cs" />
+    <Compile Include="Common\Values\DateRange.cs" />
+    <Compile Include="Common\Values\IValue.cs" />
+    <Compile Include="Common\Values\Time.cs" />
+    <Compile Include="Common\Values\TimeRange.cs" />
+    <Compile Include="Tracking\Commands\AddActivityCommand.cs" />
+    <Compile Include="Tracking\Commands\AddProjectCommand.cs" />
+    <Compile Include="Tracking\Commands\AddTimesheetCommand.cs" />
+    <Compile Include="Tracking\Commands\ModifyActivityCommand.cs" />
+    <Compile Include="Tracking\Commands\ModifyProjectCommand.cs" />
+    <Compile Include="Tracking\Commands\RemoveActivityCommand.cs" />
+    <Compile Include="Tracking\Commands\RemovedProjectCommand.cs" />
+    <Compile Include="Tracking\Commands\RemoveTimesheetCommand.cs" />
     <Compile Include="Tracking\Entities\Activity.cs" />
     <Compile Include="Tracking\Entities\Customer.cs" />
     <Compile Include="Tracking\Entities\Day.cs" />
     <Compile Include="Tracking\Entities\Project.cs" />
     <Compile Include="Tracking\Entities\Tag.cs" />
     <Compile Include="Tracking\Entities\Timesheet.cs" />
+    <Compile Include="Tracking\Events\ActivityAddedEvent.cs" />
     <Compile Include="Writer.cs" />
     <Compile Include="Tracking\Handlers\ProjectWriteHandler.cs" />
     <Compile Include="Tracking\Handlers\TimesheetWriteHandler.cs" />
@@ -63,10 +81,6 @@
     <ProjectReference Include="..\Labs.Timesheets.Common\Labs.Timesheets.Common.csproj">
       <Project>{8df4ec9d-fd36-4411-bb83-372a3c1ee4e3}</Project>
       <Name>Labs.Timesheets.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Labs.Timesheets.Contracts\Labs.Timesheets.Contracts.csproj">
-      <Project>{cf48d77e-10da-4c70-8659-06c4b2796a9e}</Project>
-      <Name>Labs.Timesheets.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

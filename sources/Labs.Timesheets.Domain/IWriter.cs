@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Labs.Timesheets.Contracts.Common.Commands;
+using Labs.Timesheets.Domain.Common.Commands;
 
 namespace Labs.Timesheets.Domain
 {

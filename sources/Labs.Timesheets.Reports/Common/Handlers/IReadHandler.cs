@@ -1,4 +1,4 @@
-﻿using Labs.Timesheets.Contracts.Common.Queries;
+﻿using Labs.Timesheets.Reports.Common.Queries;
 
 namespace Labs.Timesheets.Reports.Common.Handlers
 {

@@ -65,10 +65,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Labs.Timesheets.Contracts\Labs.Timesheets.Contracts.csproj">
-      <Project>{cf48d77e-10da-4c70-8659-06c4b2796a9e}</Project>
-      <Name>Labs.Timesheets.Contracts</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Labs.Timesheets.Domain\Labs.Timesheets.Domain.csproj">
       <Project>{ec7e9761-15d4-4113-b8ab-702598f501d3}</Project>
       <Name>Labs.Timesheets.Domain</Name>

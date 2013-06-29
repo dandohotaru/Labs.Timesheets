@@ -1,7 +1,7 @@
-﻿using Labs.Timesheets.Contracts.Tracking.Commands;
-using Labs.Timesheets.Domain.Common.Adapters;
+﻿using Labs.Timesheets.Domain.Common.Adapters;
 using Labs.Timesheets.Domain.Common.Exceptions;
 using Labs.Timesheets.Domain.Common.Handlers;
+using Labs.Timesheets.Domain.Tracking.Commands;
 using Labs.Timesheets.Domain.Tracking.Entities;
 
 namespace Labs.Timesheets.Domain.Tracking.Handlers

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Labs.Timesheets.Common.Extensions;
-using Labs.Timesheets.Contracts.Common.Commands;
-using Labs.Timesheets.Contracts.Tracking.Commands;
-using Labs.Timesheets.Contracts.Tracking.Queries;
+using Labs.Timesheets.Domain.Common.Commands;
+using Labs.Timesheets.Domain.Tracking.Commands;
+using Labs.Timesheets.Reports.Tracking.Queries;
 using Labs.Timesheets.Tests.Common;
 using NUnit.Framework;
 

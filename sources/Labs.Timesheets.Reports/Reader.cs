@@ -1,8 +1,8 @@
 using System;
-using Labs.Timesheets.Contracts.Common.Queries;
-using Labs.Timesheets.Contracts.Tracking.Queries;
 using Labs.Timesheets.Domain.Common.Adapters;
+using Labs.Timesheets.Reports.Common.Queries;
 using Labs.Timesheets.Reports.Tracking.Handlers;
+using Labs.Timesheets.Reports.Tracking.Queries;
 
 namespace Labs.Timesheets.Reports
 {
