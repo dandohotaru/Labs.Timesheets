@@ -54,6 +54,10 @@
       <Project>{ec7e9761-15d4-4113-b8ab-702598f501d3}</Project>
       <Name>Labs.Timesheets.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Labs.Timesheets.Reports\Labs.Timesheets.Reports.csproj">
+      <Project>{dfb0e46d-2fe8-48a0-8324-ea0018e19c7a}</Project>
+      <Name>Labs.Timesheets.Reports</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -2,7 +2,6 @@
 using CommonServiceLocator.NinjectAdapter;
 using Labs.Timesheets.Domain;
 using Labs.Timesheets.Domain.Common.Adapters;
-using Labs.Timesheets.Domain.Core;
 using Labs.Timesheets.Storage.Mem.Contexts;
 using Microsoft.Practices.ServiceLocation;
 using NUnit.Framework;
@@ -13,7 +12,9 @@ namespace Labs.Timesheets.Tests.Common
     [TestFixture]
     public abstract class FixtureBase
     {
-        protected IDispatcher Dispatcher { get; set; }
+        protected IWriter Writer { get; set; }
+
+        protected IReader Reader { get; set; }
 
         [TestFixtureSetUp]
         public virtual void FixtureSetUp()
@@ -21,12 +22,14 @@ namespace Labs.Timesheets.Tests.Common
             var kernel = new StandardKernel();
             kernel.Bind<IStorageAdapter>().To<StorageAdapter>().InSingletonScope();
             kernel.Bind<Func<IStorageAdapter>>().ToMethod(context => (() => context.Kernel.Get<IStorageAdapter>()));
-            kernel.Bind<IDispatcher>().To<Dispatcher>();
+            kernel.Bind<IWriter>().To<Writer>();
+            kernel.Bind<IReader>().To<Reader>();
 
             var locator = new NinjectServiceLocator(kernel);
             ServiceLocator.SetLocatorProvider(() => locator);
 
-            Dispatcher = ServiceLocator.Current.GetInstance<IDispatcher>();
+            Writer = kernel.Get<IWriter>();
+            Reader = kernel.Get<IReader>();
         }
 
         [SetUp]

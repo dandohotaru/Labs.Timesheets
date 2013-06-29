@@ -17,7 +17,7 @@ namespace Labs.Timesheets.App.Console
             var kernel = new StandardKernel();
             kernel.Bind<IStorageAdapter>().To<StorageAdapter>().InSingletonScope();
             kernel.Bind<Func<IStorageAdapter>>().ToMethod(context => (() => context.Kernel.Get<IStorageAdapter>()));
-            kernel.Bind<IDispatcher>().To<Dispatcher>();
+            kernel.Bind<IWriter>().To<Writer>();
 
             var locator = new NinjectServiceLocator(kernel);
             ServiceLocator.SetLocatorProvider(() => locator);
@@ -36,13 +36,13 @@ namespace Labs.Timesheets.App.Console
                                             ProjectNote = "Here be dragons",
                                             InitiatorId = Guid.NewGuid(),
                                         };
-            var dispatcher = ServiceLocator.Current.GetInstance<IDispatcher>();
+            var dispatcher = ServiceLocator.Current.GetInstance<IWriter>();
             dispatcher.Execute(addProjectCommand);
         }
 
         private static void FindProjectTest(Guid projectId)
         {
-            var dispatcher = ServiceLocator.Current.GetInstance<IDispatcher>();
+            var dispatcher = ServiceLocator.Current.GetInstance<IReader>();
             var findProjectQuery = new FindProjectsByIdsQuery()
                 .AddProjectId(projectId);
             var project = dispatcher

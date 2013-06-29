@@ -24,19 +24,19 @@ namespace Labs.Timesheets.Tests.Core
                                             ProjectName = "TestProject",
                                             ProjectNote = "Here be dragons",
                                         };
-            Dispatcher.Execute(addProjectCommand);
+            Writer.Execute(addProjectCommand);
 
             // When
             var removeProjectCommand = new RemovedProjectCommand
                                            {
                                                ProjectId = projectId,
                                            };
-            Dispatcher.Execute(removeProjectCommand);
+            Writer.Execute(removeProjectCommand);
 
             // Then
             var findProjectsByIdsQuery = new FindProjectsByIdsQuery()
                 .AddProjectId(projectId);
-            var result = Dispatcher
+            var result = Reader
                 .Execute(findProjectsByIdsQuery)
                 .SingleOrDefault();
             Assert.That(result, Is.Null);
@@ -55,12 +55,12 @@ namespace Labs.Timesheets.Tests.Core
                                         };
 
             // When
-            Dispatcher.Execute(addProjectCommand);
+            Writer.Execute(addProjectCommand);
 
             // Then l
             var findProjectsByIdsQuery = new FindProjectsByIdsQuery()
                 .AddProjectId(projectId);
-            var result = Dispatcher
+            var result = Reader
                 .Execute(findProjectsByIdsQuery)
                 .Single();
             Assert.That(result.ProjectId, Is.EqualTo(projectId));
@@ -85,13 +85,13 @@ namespace Labs.Timesheets.Tests.Core
                                    firstCommand,
                                    secondCommand,
                                };
-            Dispatcher.Execute(commands);
+            Writer.Execute(commands);
 
             // Then 
             var findProjectByIdsQuery = new FindProjectsByIdsQuery()
                 .AddProjectId(firstCommand.ProjectId)
                 .AddProjectId(secondCommand.ProjectId);
-            var result = Dispatcher
+            var result = Reader
                 .Execute(findProjectByIdsQuery);
             Assert.That(result, Is.Not.Null);
             Assert.That(result.Projects, Is.Not.Null);

@@ -10,9 +10,9 @@ using Labs.Timesheets.Domain.Core.Handlers;
 
 namespace Labs.Timesheets.Domain
 {
-    public class Dispatcher : IDispatcher
+    public class Writer : IWriter
     {
-        public Dispatcher(Func<IStorageAdapter> contextBuilder)
+        public Writer(Func<IStorageAdapter> contextBuilder)
         {
             ContextBuilder = contextBuilder;
         }
@@ -23,8 +23,8 @@ namespace Labs.Timesheets.Domain
         {
             using (var context = ContextBuilder())
             {
-                var instance = (dynamic)this;
-                instance.When((dynamic)command, context);
+                var instance = (dynamic) this;
+                instance.When((dynamic) command, context);
                 context.Save();
             }
         }
@@ -35,8 +35,8 @@ namespace Labs.Timesheets.Domain
             {
                 foreach (var command in commands.Distinct())
                 {
-                    var instance = (dynamic)this;
-                    instance.When((dynamic)command, context);
+                    var instance = (dynamic) this;
+                    instance.When((dynamic) command, context);
                 }
 
                 context.Save();
@@ -47,8 +47,8 @@ namespace Labs.Timesheets.Domain
         {
             using (var context = ContextBuilder())
             {
-                var instance = (dynamic)this;
-                return instance.When((dynamic)query, context);
+                var instance = (dynamic) this;
+                return instance.When((dynamic) query, context);
             }
         }
 
