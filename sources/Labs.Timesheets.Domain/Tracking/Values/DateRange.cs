@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using Labs.Timesheets.Domain.Common.Values;
 
 namespace Labs.Timesheets.Domain.Tracking.Values
@@ -39,6 +40,15 @@ namespace Labs.Timesheets.Domain.Tracking.Values
             {
                 return (Start.GetHashCode()*397) ^ End.GetHashCode();
             }
+        }
+
+        public override string ToString()
+        {
+            return new StringBuilder()
+                .AppendFormat("{0}", Start.ToLocalTime().Date.ToShortDateString())
+                .AppendFormat(" - ")
+                .AppendFormat("{0}", End.ToLocalTime().Date.ToShortDateString())
+                .ToString();
         }
     }
 }

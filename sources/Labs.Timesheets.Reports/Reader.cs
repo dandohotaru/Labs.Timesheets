@@ -33,5 +33,10 @@ namespace Labs.Timesheets.Reports
         {
             return new TagReadHandler(context).Handle(query);
         }
+
+        public FindActivitiesByDateResult When(FindActivitiesByDateQuery query, IStorageAdapter context)
+        {
+            return new ActivityReadHandler(context).Handle(query);
+        }
     }
 }

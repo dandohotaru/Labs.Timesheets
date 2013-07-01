@@ -7,13 +7,13 @@ namespace Labs.Timesheets.Tests.Seeding
     public static class JohnDoeStubs
     {
         public static readonly Guid CustomerId = Guid.NewGuid();
-        public static readonly string CustomerName = "Trello";
+        public static readonly string CustomerName = "Rndmzr";
 
         public static IStorageAdapter SeedJohnDoeCustomers(this IStorageAdapter context)
         {
             var customer = new Customer(CustomerId)
                 .ApplyName(CustomerName)
-                .ApplyNotes("Hell of a cool customer");
+                .ApplyNotes("Hell of a customer");
 
             context.Add(customer);
             return context;
@@ -33,12 +33,12 @@ namespace Labs.Timesheets.Tests.Seeding
             var setupSolution = new Activity(Guid.NewGuid())
                 .ApplyDate(today)
                 .ApplyPeriod(morning, 0.5)
-                .ApplyNotes("Working on setting up the solution");
+                .ApplyNotes("Work on configuring the solution");
 
             var implementTestLayer = new Activity(Guid.NewGuid())
                 .ApplyDate(today)
                 .ApplyPeriod(setupSolution.Period.AddHours(2))
-                .ApplyNotes("Working on a setting up the test layer");
+                .ApplyNotes("Work on a setting up the test layer");
 
             var configureGithub = new Activity(Guid.NewGuid())
                 .ApplyDate(today)
@@ -63,7 +63,7 @@ namespace Labs.Timesheets.Tests.Seeding
             var goOutForLunch = new Activity(Guid.NewGuid())
                 .ApplyDate(today)
                 .ApplyPeriod(poetOnTwitter.Period.AddHours(1.5))
-                .ApplyNotes("Feel like going for a drink i mean pizza");
+                .ApplyNotes("Feels like going for a drink i mean pizza");
 
             context.Add(setupSolution);
             context.Add(implementTestLayer);

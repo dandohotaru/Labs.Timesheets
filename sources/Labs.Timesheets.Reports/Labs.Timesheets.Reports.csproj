@@ -44,6 +44,7 @@
     <Compile Include="Common\Queries\QueryBase.cs" />
     <Compile Include="Common\Queries\ResultBase.cs" />
     <Compile Include="Tracking\Handlers\TagReadHandler.cs" />
+    <Compile Include="Tracking\Handlers\ActivityReadHandler.cs" />
     <Compile Include="Tracking\Handlers\TimesheetReadHandler.cs" />
     <Compile Include="Common\Handlers\IReadHandler.cs" />
     <Compile Include="IReader.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Tracking\Models\TagDetail.cs" />
     <Compile Include="Tracking\Models\TimesheetBrief.cs" />
     <Compile Include="Tracking\Models\TimesheetDetail.cs" />
+    <Compile Include="Tracking\Queries\FindActivitiesByDateQuery.cs" />
     <Compile Include="Tracking\Queries\FindTagsByIdsQuery.cs" />
     <Compile Include="Tracking\Queries\FindTagsByTextQuery.cs" />
     <Compile Include="Tracking\Queries\FindTimesheetByIdQuery.cs" />

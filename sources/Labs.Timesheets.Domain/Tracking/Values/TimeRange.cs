@@ -5,7 +5,7 @@ using Labs.Timesheets.Domain.Common.Values;
 namespace Labs.Timesheets.Domain.Tracking.Values
 {
     [Serializable]
-    public class TimeRange : IValue
+    public class TimeRange : IValue, IEquatable<TimeRange>
     {
         public TimeRange(TimeSpan start, TimeSpan end)
         {
@@ -13,9 +13,14 @@ namespace Labs.Timesheets.Domain.Tracking.Values
             End = end;
         }
 
-        public TimeSpan Start { get; set; }
+        public TimeSpan Start { get; protected set; }
 
-        public TimeSpan End { get; set; }
+        public TimeSpan End { get; protected set; }
+
+        public TimeSpan Duration
+        {
+            get { return End - Start; }
+        }
 
         public TimeRange AddHours(double hours)
         {
@@ -38,7 +43,7 @@ namespace Labs.Timesheets.Domain.Tracking.Values
             return new TimeRange(start, end);
         }
 
-        protected bool Equals(TimeRange other)
+        public bool Equals(TimeRange other)
         {
             return Start.Equals(other.Start)
                    && End.Equals(other.End);
@@ -78,6 +83,16 @@ namespace Labs.Timesheets.Domain.Tracking.Values
         public static double ToHours(this TimeRange instance)
         {
             return (instance.End - instance.Start).TotalHours;
+        }
+
+        public static double ToMinutes(this TimeRange instance)
+        {
+            return (instance.End - instance.Start).TotalMinutes;
+        }
+
+        public static double ToSeconds(this TimeRange instance)
+        {
+            return (instance.End - instance.Start).TotalSeconds;
         }
     }
 }

@@ -16,9 +16,9 @@ namespace Labs.Timesheets.Domain.Tracking.Entities
 
         public DateTimeOffset Date { get; protected set; }
 
-        public string Notes { get; protected set; }
-
         public TimeRange Period { get; protected set; }
+        
+        public string Notes { get; protected set; }
 
         public IList<Tag> Tags { get; protected set; }
 
