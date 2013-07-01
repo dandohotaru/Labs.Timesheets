@@ -14,9 +14,9 @@ namespace Labs.Timesheets.Tests.Tracking
         public void WhenActivitiesAreSearchedThenActivitiesCanBeRetrieved()
         {
             // Given
-            var today = DateTime.Now.ToUniversalTime().Date;
+            var today = DateTime.Now.Date;
             var query = new FindActivitiesByDateQuery()
-                .ForDate(today);
+                .ForReference(today);
 
             // When
             var result = Reader.Execute(query);

@@ -28,41 +28,34 @@ namespace Labs.Timesheets.Tests.Seeding
         public static IStorageAdapter SeedJohnDoeActivities(this IStorageAdapter context)
         {
             var today = DateTime.Now.Date;
-            var morning = new TimeSpan(8, 0, 0);
+            var morning = new DateTime(today.Year, today.Month, today.Day, 8, 0, 0);
 
             var setupSolution = new Activity(Guid.NewGuid())
-                .ApplyDate(today)
                 .ApplyPeriod(morning, 0.5)
                 .ApplyNotes("Work on configuring the solution");
 
             var implementTestLayer = new Activity(Guid.NewGuid())
-                .ApplyDate(today)
-                .ApplyPeriod(setupSolution.Period.AddHours(2))
-                .ApplyNotes("Work on a setting up the test layer");
+                .ApplyPeriod(setupSolution.End, 2)
+                .ApplyNotes("Work on setting up the test layer");
 
             var configureGithub = new Activity(Guid.NewGuid())
-                .ApplyDate(today)
-                .ApplyPeriod(implementTestLayer.Period.AddHours(1))
+                .ApplyPeriod(implementTestLayer.End, 1)
                 .ApplyNotes("Configure source control with github");
 
             var drinkCoffee = new Activity(Guid.NewGuid())
-                .ApplyDate(today)
-                .ApplyPeriod(configureGithub.Period.AddHours(0.25))
+                .ApplyPeriod(configureGithub.End, 0.25)
                 .ApplyNotes("Hard work today I need a coffee");
 
             var smokeCigarette = new Activity(Guid.NewGuid())
-                .ApplyDate(today)
-                .ApplyPeriod(drinkCoffee.Period.AddHours(0.25))
+                .ApplyPeriod(drinkCoffee.End, 0.25)
                 .ApplyNotes("I know it's bad for my health but i deserve it");
 
             var poetOnTwitter = new Activity(Guid.NewGuid())
-                .ApplyDate(today)
-                .ApplyPeriod(smokeCigarette.Period.AddHours(0.5))
+                .ApplyPeriod(smokeCigarette.End, 0.5)
                 .ApplyNotes("Praise myself about the great achievements of today");
 
             var goOutForLunch = new Activity(Guid.NewGuid())
-                .ApplyDate(today)
-                .ApplyPeriod(poetOnTwitter.Period.AddHours(1.5))
+                .ApplyPeriod(poetOnTwitter.End, 1.5)
                 .ApplyNotes("Feels like going for a drink i mean pizza");
 
             context.Add(setupSolution);

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Labs.Timesheets.Domain.Common.Entities;
-using Labs.Timesheets.Domain.Tracking.Values;
+using Labs.Timesheets.Domain.Common.Exceptions;
 
 namespace Labs.Timesheets.Domain.Tracking.Entities
 {
@@ -12,38 +12,32 @@ namespace Labs.Timesheets.Domain.Tracking.Entities
         {
         }
 
-        public Guid ShiftId { get; protected set; }
+        public DateTimeOffset Start { get; protected set; }
 
-        public DateTimeOffset Date { get; protected set; }
-
-        public TimeRange Period { get; protected set; }
-        
-        public string Notes { get; protected set; }
+        public DateTimeOffset End { get; protected set; }
 
         public IList<Tag> Tags { get; protected set; }
 
-        public Activity ApplyShift(Guid shiftId)
+        public string Notes { get; protected set; }
+
+        public TimeSpan Duration
         {
-            ShiftId = shiftId;
+            get { return End - Start; }
+        }
+
+        public Activity ApplyPeriod(DateTimeOffset start, DateTimeOffset end)
+        {
+            if (end <= start)
+                throw new BusinessException("The end time needs to be greater than the start time");
+            Start = start;
+            End = end;
             return this;
         }
 
-        public Activity ApplyDate(DateTimeOffset date)
-        {
-            Date = date;
-            return this;
-        }
-
-        public Activity ApplyPeriod(TimeRange period)
-        {
-            Period = period;
-            return this;
-        }
-
-        public Activity ApplyPeriod(TimeSpan start, double hours)
+        public Activity ApplyPeriod(DateTimeOffset start, double hours)
         {
             var end = start.Add(TimeSpan.FromHours(hours));
-            Period = new TimeRange(start, end);
+            ApplyPeriod(start, end);
             return this;
         }
 
@@ -74,9 +68,9 @@ namespace Labs.Timesheets.Domain.Tracking.Entities
         public override string ToString()
         {
             return new StringBuilder()
-                .AppendFormat("Date: {0}. ", Date.DateTime.ToShortDateString())
-                .AppendFormat("Period: {0}. ", Period)
-                .AppendFormat("Duration: {0}. ", Period.ToHours())
+                .AppendFormat("Start: {0}. ", Start.ToLocalTime().TimeOfDay)
+                .AppendFormat("End: {0}. ", End.ToLocalTime().TimeOfDay)
+                .AppendFormat("Duration: {0}. ", Duration.TotalHours)
                 .AppendFormat("Notes: {0} ", Notes)
                 .ToString();
         }

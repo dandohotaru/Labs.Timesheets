@@ -8,11 +8,14 @@ namespace Labs.Timesheets.Reports.Tracking.Models
     {
         public Guid Id { get; set; }
 
-        public DateTimeOffset Date { get; set; }
+        public DateTimeOffset Start { get; set; }
 
-        public TimeSpan Start { get; set; }
+        public DateTimeOffset End { get; set; }
 
-        public TimeSpan End { get; set; }
+        public TimeSpan Duration
+        {
+            get { return End - Start; }
+        }
 
         public string Notes { get; set; }
 
@@ -21,9 +24,9 @@ namespace Labs.Timesheets.Reports.Tracking.Models
         public override string ToString()
         {
             return new StringBuilder()
-                .AppendFormat("Date: {0}. ", Date.DateTime.ToShortDateString())
-                .AppendFormat("Start: {0}. ", Start)
-                .AppendFormat("End: {0}. ", End)
+                .AppendFormat("Start: {0}. ", Start.TimeOfDay)
+                .AppendFormat("End: {0}. ", End.TimeOfDay)
+                .AppendFormat("Duration: {0}. ", Duration.TotalHours)
                 .AppendFormat("Notes: {0}", Notes)
                 .ToString();
         }

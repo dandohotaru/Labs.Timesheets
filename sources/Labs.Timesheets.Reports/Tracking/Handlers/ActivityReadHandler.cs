@@ -20,18 +20,16 @@ namespace Labs.Timesheets.Reports.Tracking.Handlers
         public FindActivitiesByDateResult Handle(FindActivitiesByDateQuery request)
         {
             var query = from activity in Context.Query<Activity>()
-                        let activityDate = activity.Date.ToUniversalTime().Date
-                        let requestDate = request.Date.ToUniversalTime().Date
-                        where activityDate == requestDate
+                        where activity.Start.Date <= request.Reference.Date
+                              && activity.End.Date >= request.Reference.Date
                         select activity;
 
             var views = from activity in query
                         select new ActivityDetail
                                    {
                                        Id = activity.Id,
-                                       Date = activity.Date,
-                                       Start = activity.Period.Start,
-                                       End = activity.Period.End,
+                                       Start = activity.Start,
+                                       End = activity.End,
                                        Notes = activity.Notes,
                                    };
 
