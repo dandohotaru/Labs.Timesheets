@@ -4,6 +4,7 @@ using Labs.Timesheets.Domain;
 using Labs.Timesheets.Domain.Common.Adapters;
 using Labs.Timesheets.Reports;
 using Labs.Timesheets.Storage.Mem.Contexts;
+using Labs.Timesheets.Tests.Seeding;
 using Microsoft.Practices.ServiceLocation;
 using NUnit.Framework;
 using Ninject;
@@ -13,9 +14,8 @@ namespace Labs.Timesheets.Tests.Common
     [TestFixture]
     public abstract class FixtureBase
     {
-        protected IWriter Writer { get; set; }
-
         protected IReader Reader { get; set; }
+        protected IWriter Writer { get; set; }
 
         [TestFixtureSetUp]
         public virtual void FixtureSetUp()
@@ -29,18 +29,26 @@ namespace Labs.Timesheets.Tests.Common
             var locator = new NinjectServiceLocator(kernel);
             ServiceLocator.SetLocatorProvider(() => locator);
 
-            Writer = kernel.Get<IWriter>();
             Reader = kernel.Get<IReader>();
+            Writer = kernel.Get<IWriter>();
         }
 
         [SetUp]
         public virtual void TestSetUp()
         {
+            ServiceLocator.Current
+                .GetInstance<IStorageAdapter>()
+                .SeedJohnDoeCustomers()
+                .SeedJohnDoeTags()
+                .SeedJohnDoeActivities();
         }
 
         [TearDown]
         public virtual void TestTearDown()
         {
+            ServiceLocator.Current
+                .GetInstance<IStorageAdapter>()
+                .Clear();
         }
 
         [TestFixtureTearDown]

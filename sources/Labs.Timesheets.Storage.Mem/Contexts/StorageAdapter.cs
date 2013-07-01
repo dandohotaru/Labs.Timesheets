@@ -62,6 +62,12 @@ namespace Labs.Timesheets.Storage.Mem.Contexts
         {
         }
 
+        public void Clear()
+        {
+            if (Cache != null)
+                Cache.Clear();
+        }
+
         public void Dispose()
         {
         }

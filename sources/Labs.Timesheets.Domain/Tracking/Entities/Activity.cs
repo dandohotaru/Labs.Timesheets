@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using Labs.Timesheets.Domain.Common.Entities;
-using Labs.Timesheets.Domain.Common.Values;
 using Labs.Timesheets.Domain.Tracking.Values;
 
 namespace Labs.Timesheets.Domain.Tracking.Entities
@@ -40,6 +40,13 @@ namespace Labs.Timesheets.Domain.Tracking.Entities
             return this;
         }
 
+        public Activity ApplyPeriod(TimeSpan start, double hours)
+        {
+            var end = start.Add(TimeSpan.FromHours(hours));
+            Period = new TimeRange(start, end);
+            return this;
+        }
+
         public Activity ApplyNotes(string notes)
         {
             Notes = notes;
@@ -62,6 +69,16 @@ namespace Labs.Timesheets.Domain.Tracking.Entities
         public Activity LinkTag(Tag tag)
         {
             return LinkTags(new List<Tag> {tag});
+        }
+
+        public override string ToString()
+        {
+            return new StringBuilder()
+                .AppendFormat("Date: {0}. ", Date.DateTime.ToShortDateString())
+                .AppendFormat("Period: {0}. ", Period)
+                .AppendFormat("Duration: {0}. ", Period.ToHours())
+                .AppendFormat("Notes: {0} ", Notes)
+                .ToString();
         }
     }
 }

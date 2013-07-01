@@ -20,5 +20,7 @@ namespace Labs.Timesheets.Domain.Common.Adapters
         void Remove<TEntity>(IEnumerable<TEntity> entities) where TEntity : class, IEntity;
 
         void Save();
+
+        void Clear();
     }
 }

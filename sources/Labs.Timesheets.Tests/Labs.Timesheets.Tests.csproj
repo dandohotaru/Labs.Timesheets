@@ -63,7 +63,7 @@
     <Compile Include="Tracking\TagTests.cs" />
     <Compile Include="Tracking\TimesheetTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Seeding\StorageExtensions.cs" />
+    <Compile Include="Seeding\JohnDoeStubs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

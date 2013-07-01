@@ -68,5 +68,9 @@ namespace Labs.Timesheets.Storage.Efw.Contexts
         {
             SaveChanges();
         }
+
+        public void Clear()
+        {
+        }
     }
 }

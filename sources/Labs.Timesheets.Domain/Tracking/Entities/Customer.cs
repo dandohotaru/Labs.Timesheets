@@ -20,7 +20,7 @@ namespace Labs.Timesheets.Domain.Tracking.Entities
             return this;
         }
 
-        public Customer ApplyNote(string note)
+        public Customer ApplyNotes(string note)
         {
             Notes = note;
             return this;
