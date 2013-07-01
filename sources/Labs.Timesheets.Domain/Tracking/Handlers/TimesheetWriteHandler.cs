@@ -32,7 +32,7 @@ namespace Labs.Timesheets.Domain.Tracking.Handlers
 
         public void Handle(RemoveTimesheetCommand command)
         {
-            var timesheet = Context.Find<Project>(command.TimesheetId);
+            var timesheet = Context.Find<Tag>(command.TimesheetId);
             if (timesheet == null)
                 throw new BusinessException("The provided timesheet {0} does not exists in data store.", command.TimesheetId);
 

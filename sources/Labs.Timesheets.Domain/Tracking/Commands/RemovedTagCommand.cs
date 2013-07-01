@@ -3,8 +3,8 @@ using Labs.Timesheets.Domain.Common.Commands;
 
 namespace Labs.Timesheets.Domain.Tracking.Commands
 {
-    public class RemovedProjectCommand : CommandBase
+    public class RemovedTagCommand : CommandBase
     {
-        public Guid ProjectId { get; set; }
+        public Guid TagId { get; set; }
     }
 }

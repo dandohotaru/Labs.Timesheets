@@ -1,6 +1,7 @@
 ﻿using System;
 using Labs.Timesheets.Domain.Common.Commands;
 using Labs.Timesheets.Domain.Common.Values;
+using Labs.Timesheets.Domain.Tracking.Values;
 
 namespace Labs.Timesheets.Domain.Tracking.Commands
 {

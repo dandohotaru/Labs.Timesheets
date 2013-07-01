@@ -2,6 +2,7 @@
 using Labs.Timesheets.Domain.Common.Adapters;
 using Labs.Timesheets.Domain.Common.Values;
 using Labs.Timesheets.Domain.Tracking.Entities;
+using Labs.Timesheets.Domain.Tracking.Values;
 
 namespace Labs.Timesheets.Tests.Seeding
 {

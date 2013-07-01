@@ -24,14 +24,14 @@ namespace Labs.Timesheets.Reports
             }
         }
 
-        public FindProjectsByIdsResult When(FindProjectsByIdsQuery query, IStorageAdapter context)
+        public FindTagsByIdsResult When(FindTagsByIdsQuery query, IStorageAdapter context)
         {
-            return new ProjectReadHandler(context).Handle(query);
+            return new TagReadHandler(context).Handle(query);
         }
 
-        public FindProjectsByTextResult When(FindProjectsByTextQuery query, IStorageAdapter context)
+        public FindTagsByTextResult When(FindTagsByTextQuery query, IStorageAdapter context)
         {
-            return new ProjectReadHandler(context).Handle(query);
+            return new TagReadHandler(context).Handle(query);
         }
     }
 }

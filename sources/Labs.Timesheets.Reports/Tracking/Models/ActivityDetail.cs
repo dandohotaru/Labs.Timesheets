@@ -15,6 +15,6 @@ namespace Labs.Timesheets.Reports.Tracking.Models
 
         public TimeSpan End { get; set; }
 
-        public List<ProjectBrief> Projects { get; set; }
+        public List<TagBrief> Projects { get; set; }
     }
 }

@@ -9,17 +9,19 @@ namespace Labs.Timesheets.Domain.Tracking.Entities
         {
         }
 
-        public Tag(Guid id, string name)
-            : base(id)
-        {
-            Name = name;
-        }
-
         public string Name { get; protected set; }
+
+        public string Notes { get; protected set; }
 
         public Tag ApplyName(string name)
         {
             Name = name;
+            return this;
+        }
+
+        public Tag ApplyNotes(string notes)
+        {
+            Notes = notes;
             return this;
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
+using Labs.Timesheets.Domain.Common.Values;
 
-namespace Labs.Timesheets.Domain.Common.Values
+namespace Labs.Timesheets.Domain.Tracking.Values
 {
     public class Time : IValue
     {

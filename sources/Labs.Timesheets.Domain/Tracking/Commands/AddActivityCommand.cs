@@ -12,7 +12,7 @@ namespace Labs.Timesheets.Domain.Tracking.Commands
 
         public Guid ClientId { get; set; }
 
-        public List<Guid> ProjectIds { get; set; }
+        public List<Guid> TagIds { get; set; }
 
         public string Description { get; set; }
 

@@ -22,7 +22,7 @@ namespace Labs.Timesheets.Storage.Efw.Contexts
             Configuration.ProxyCreationEnabled = false;
         }
 
-        public IDbSet<Project> Projects { get; set; }
+        public IDbSet<Tag> Projects { get; set; }
 
         public IDbSet<Timesheet> Timesheets { get; set; }
 

@@ -41,19 +41,19 @@ namespace Labs.Timesheets.Domain
             }
         }
 
-        public void When(AddProjectCommand command, IStorageAdapter context)
+        public void When(AddTagCommand command, IStorageAdapter context)
         {
-            new ProjectWriteHandler(context).Handle(command);
+            new TagWriteHandler(context).Handle(command);
         }
 
-        public void When(ModifyProjectCommand command, IStorageAdapter context)
+        public void When(ModifyTagCommand command, IStorageAdapter context)
         {
-            new ProjectWriteHandler(context).Handle(command);
+            new TagWriteHandler(context).Handle(command);
         }
 
-        public void When(RemovedProjectCommand command, IStorageAdapter context)
+        public void When(RemovedTagCommand command, IStorageAdapter context)
         {
-            new ProjectWriteHandler(context).Handle(command);
+            new TagWriteHandler(context).Handle(command);
         }
     }
 }

@@ -30,11 +30,11 @@ namespace Labs.Timesheets.App.Console
 
         private static void AddProjectTest(Guid projectId)
         {
-            var addProjectCommand = new AddProjectCommand
+            var addProjectCommand = new AddTagCommand
                                         {
-                                            ProjectId = projectId,
-                                            ProjectName = "Testing",
-                                            ProjectNote = "Here be dragons",
+                                            TagId = projectId,
+                                            TagName = "Testing",
+                                            TagNotes = "Here be dragons",
                                             InitiatorId = Guid.NewGuid(),
                                         };
             var dispatcher = ServiceLocator.Current.GetInstance<IWriter>();
@@ -44,12 +44,12 @@ namespace Labs.Timesheets.App.Console
         private static void FindProjectTest(Guid projectId)
         {
             var dispatcher = ServiceLocator.Current.GetInstance<IReader>();
-            var findProjectQuery = new FindProjectsByIdsQuery()
-                .AddProjectId(projectId);
+            var findProjectQuery = new FindTagsByIdsQuery()
+                .AddTagId(projectId);
             var project = dispatcher
                 .Execute(findProjectQuery);
             if (project == null)
-                throw new Exception("The project could not be found based on id");
+                throw new Exception("The tag could not be found based on id");
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
+using Labs.Timesheets.Domain.Common.Values;
 
-namespace Labs.Timesheets.Domain.Common.Values
+namespace Labs.Timesheets.Domain.Tracking.Values
 {
     [Serializable]
     public class DateRange : IValue

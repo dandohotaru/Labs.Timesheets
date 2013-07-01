@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Labs.Timesheets.Domain.Common.Entities;
 using Labs.Timesheets.Domain.Common.Values;
+using Labs.Timesheets.Domain.Tracking.Values;
 
 namespace Labs.Timesheets.Domain.Tracking.Entities
 {
@@ -19,7 +20,7 @@ namespace Labs.Timesheets.Domain.Tracking.Entities
 
         public TimeRange Period { get; protected set; }
 
-        public IList<Project> Projects { get; protected set; }
+        public IList<Tag> Tags { get; protected set; }
 
         public Activity ApplyShift(Guid shiftId)
         {
@@ -45,22 +46,22 @@ namespace Labs.Timesheets.Domain.Tracking.Entities
             return this;
         }
 
-        public Activity LinkProjects(IEnumerable<Project> projects)
+        public Activity LinkTags(IEnumerable<Tag> tags)
         {
-            if (Projects == null)
-                Projects = new List<Project>();
+            if (Tags == null)
+                Tags = new List<Tag>();
 
-            foreach (var project in projects)
+            foreach (var project in tags)
             {
-                Projects.Add(project);
+                Tags.Add(project);
             }
 
             return this;
         }
 
-        public Activity LinkProject(Project project)
+        public Activity LinkTag(Tag tag)
         {
-            return LinkProjects(new List<Project> {project});
+            return LinkTags(new List<Tag> {tag});
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Labs.Timesheets.Domain.Common.Events;
 using Labs.Timesheets.Domain.Common.Values;
+using Labs.Timesheets.Domain.Tracking.Values;
 
 namespace Labs.Timesheets.Domain.Tracking.Events
 {
