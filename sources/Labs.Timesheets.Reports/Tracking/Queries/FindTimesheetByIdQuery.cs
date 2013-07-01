@@ -11,6 +11,12 @@ namespace Labs.Timesheets.Reports.Tracking.Queries
 
     public class FindTimesheetByIdResult : ResultBase
     {
-        public TimesheetDetail Timesheet { get; set; }
+        public TimesheetDetail Timesheet { get; protected set; }
+
+        public FindTimesheetByIdResult Set(TimesheetDetail detail)
+        {
+            Timesheet = detail;
+            return this;
+        }
     }
 }

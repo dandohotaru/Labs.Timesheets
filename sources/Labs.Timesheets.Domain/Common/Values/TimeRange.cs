@@ -5,20 +5,20 @@ namespace Labs.Timesheets.Domain.Common.Values
     [Serializable]
     public class TimeRange : IValue
     {
-        public TimeRange(TimeSpan from, TimeSpan to)
+        public TimeRange(TimeSpan start, TimeSpan end)
         {
-            From = from;
-            To = to;
+            Start = start;
+            End = end;
         }
 
-        public TimeSpan From { get; set; }
+        public TimeSpan Start { get; set; }
 
-        public TimeSpan To { get; set; }
+        public TimeSpan End { get; set; }
 
         protected bool Equals(TimeRange other)
         {
-            return From.Equals(other.From)
-                   && To.Equals(other.To);
+            return Start.Equals(other.Start)
+                   && End.Equals(other.End);
         }
 
         public override bool Equals(object other)
@@ -36,7 +36,7 @@ namespace Labs.Timesheets.Domain.Common.Values
         {
             unchecked
             {
-                return (From.GetHashCode()*397) ^ To.GetHashCode();
+                return (Start.GetHashCode()*397) ^ End.GetHashCode();
             }
         }
     }

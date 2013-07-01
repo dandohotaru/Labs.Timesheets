@@ -6,6 +6,6 @@ namespace Labs.Timesheets.Reports.Common.Handlers
         where TQuery : IQuery<TResult>
         where TResult : IResult
     {
-        TResult Handle(TQuery query);
+        TResult Handle(TQuery request);
     }
 }

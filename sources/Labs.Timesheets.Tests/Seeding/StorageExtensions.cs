@@ -1,5 +1,6 @@
 ﻿using System;
 using Labs.Timesheets.Domain.Common.Adapters;
+using Labs.Timesheets.Domain.Common.Values;
 using Labs.Timesheets.Domain.Tracking.Entities;
 
 namespace Labs.Timesheets.Tests.Seeding
@@ -21,13 +22,13 @@ namespace Labs.Timesheets.Tests.Seeding
                 .ApplyCustomer(EliaId)
                 .ApplyOwner(JohnDoeId);
 
-            var activityOne = new Activity(Guid.NewGuid());
-
-            var monday = new Day(MondayId)
+            var activityOne = new Activity(Guid.NewGuid())
                 .ApplyDate(new DateTimeOffset(new DateTime(2013, 5, 6)))
-                .ApplyTimesheet(MayTimesheetId)
-                .AddActivity(activityOne);
+                .ApplyPeriod(new TimeRange(new TimeSpan(0, 10, 0), new TimeSpan(0, 11, 0)))
+                .ApplyNotes("Working on a sample exception");
 
+            var monday = new Shift(MondayId)
+                .AddActivity(activityOne);
 
             context.Add(timesheet);
             context.Add(monday);

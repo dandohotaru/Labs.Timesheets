@@ -18,68 +18,81 @@ namespace Labs.Timesheets.Reports.Tracking.Handlers
 
         protected IStorageAdapter Context { get; set; }
 
-        public FindTimesheetByIdResult Handle(FindTimesheetByIdQuery query)
+        public FindTimesheetByIdResult Handle(FindTimesheetByIdQuery request)
         {
-            var results = from timesheet in Context.Query<Timesheet>()
-                          where timesheet.Id == query.TimesheetId
-                          select new FindTimesheetByIdResult
-                                     {
-                                         Timesheet = new TimesheetDetail
-                                                         {
-                                                             Id = timesheet.Id,
-                                                             Name = timesheet.Name,
-                                                         },
-                                     };
+            var query = from timesheet in Context.Query<Timesheet>()
+                        where timesheet.Id == request.TimesheetId
+                        select timesheet;
 
-            return results.SingleOrDefault();
+            var data = from timesheet in query
+                       select new TimesheetDetail
+                                  {
+                                      Id = timesheet.Id,
+                                      Name = timesheet.Name,
+                                  };
+
+            var result = new FindTimesheetByIdResult()
+                .Set(data.SingleOrDefault());
+
+            return result;
         }
 
-        public FindTimesheetsByTextResult Handle(FindTimesheetsByTextQuery query)
+        public FindTimesheetsByTextResult Handle(FindTimesheetsByTextQuery request)
         {
-            var timesheets = from timesheet in Context.Query<Timesheet>()
-                             where timesheet.Name == query.SearchText
-                                   || timesheet.Notes == query.SearchText
-                             select new TimesheetBrief
-                                        {
-                                            Id = timesheet.Id,
-                                            Name = timesheet.Name,
-                                        };
+            var query = from timesheet in Context.Query<Timesheet>()
+                        where timesheet.Name == request.SearchText
+                              || timesheet.Notes == request.SearchText
+                        select timesheet;
+
+            var data = from timesheet in query
+                       select new TimesheetBrief
+                                  {
+                                      Id = timesheet.Id,
+                                      Name = timesheet.Name,
+                                  };
 
             var results = new FindTimesheetsByTextResult()
-                .Add(timesheets);
+                .Add(data);
 
             return results;
         }
 
-        public FindTimesheetsByCriteriaResult Handle(FindTimesheetsByCriteriaQuery query)
+        public FindTimesheetsByCriteriaResult Handle(FindTimesheetsByCriteriaQuery request)
         {
-            var selector = Context.Query<Timesheet>();
+            var query = Context.Query<Timesheet>();
 
-            if (query.OwnerId != null)
+            if (request.OwnerId != null)
             {
-                selector = from timesheet in selector
-                           where timesheet.OwnerId == query.OwnerId
-                           select timesheet;
+                query = from timesheet in query
+                        where timesheet.OwnerId == request.OwnerId
+                        select timesheet;
             }
 
-            if (query.Coverage != null)
+            if (request.StartDate != null)
             {
-                selector = from timesheet in selector
-                           from activity in timesheet.Days
-                           where query.Coverage.From <= activity.Reference
-                           where query.Coverage.To >= activity.Reference
-                           select timesheet;
+                //query = from timesheet in query
+                //        from activity in timesheet.Shifts
+                //        where request.StartDate <= activity.Reference
+                //        select timesheet;
             }
 
-            if (query.SearchText != null)
+            if (request.EndDate != null)
             {
-                selector = from timesheet in selector
-                           where timesheet.Name.Contains(query.SearchText)
-                           where timesheet.Notes.Contains(query.SearchText)
-                           select timesheet;
+                //query = from timesheet in query
+                //        from activity in timesheet.Shifts
+                //        where request.EndDate >= activity.Reference
+                //        select timesheet;
             }
 
-            var timesheets = from timesheet in selector
+            if (request.SearchText != null)
+            {
+                query = from timesheet in query
+                        where timesheet.Name.Contains(request.SearchText)
+                        where timesheet.Notes.Contains(request.SearchText)
+                        select timesheet;
+            }
+
+            var timesheets = from timesheet in query
                              select new TimesheetBrief
                                         {
                                             Id = timesheet.Id,

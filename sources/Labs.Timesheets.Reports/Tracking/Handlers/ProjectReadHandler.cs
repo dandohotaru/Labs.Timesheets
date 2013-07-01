@@ -18,10 +18,10 @@ namespace Labs.Timesheets.Reports.Tracking.Handlers
 
         protected IStorageAdapter Context { get; set; }
 
-        public FindProjectsByIdsResult Handle(FindProjectsByIdsQuery query)
+        public FindProjectsByIdsResult Handle(FindProjectsByIdsQuery request)
         {
             var projects = from project in Context.Query<Project>()
-                           where query.ProjectIds.Contains(project.Id)
+                           where request.ProjectIds.Contains(project.Id)
                            select new ProjectDetail
                                       {
                                           ProjectId = project.Id,
@@ -34,11 +34,11 @@ namespace Labs.Timesheets.Reports.Tracking.Handlers
             return results;
         }
 
-        public FindProjectsByTextResult Handle(FindProjectsByTextQuery query)
+        public FindProjectsByTextResult Handle(FindProjectsByTextQuery request)
         {
             var projects = from project in Context.Query<Project>()
-                           where project.Name == query.SearchText
-                                 || project.Name == query.SearchText
+                           where project.Name == request.SearchText
+                                 || project.Name == request.SearchText
                            select new ProjectBrief
                                       {
                                           ProjectId = project.Id,

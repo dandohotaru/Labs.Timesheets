@@ -1,5 +1,4 @@
 using System;
-using Labs.Timesheets.Domain.Common.Values;
 
 namespace Labs.Timesheets.Reports.Tracking.Models
 {
@@ -11,6 +10,8 @@ namespace Labs.Timesheets.Reports.Tracking.Models
 
         public int Hours { get; set; }
 
-        public DateRange Coverage { get; set; }
+        public DateTimeOffset Start { get; set; }
+
+        public DateTimeOffset End { get; set; }
     }
 }

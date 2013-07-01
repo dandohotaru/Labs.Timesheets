@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Labs.Timesheets.Domain.Common.Values;
 using Labs.Timesheets.Reports.Common.Queries;
 using Labs.Timesheets.Reports.Tracking.Models;
 
@@ -10,7 +9,9 @@ namespace Labs.Timesheets.Reports.Tracking.Queries
     {
         public Guid? OwnerId { get; protected set; }
 
-        public DateRange Coverage { get; protected set; }
+        public DateTimeOffset? StartDate { get; protected set; }
+
+        public DateTimeOffset? EndDate { get; protected set; }
 
         public string SearchText { get; protected set; }
 
@@ -20,9 +21,15 @@ namespace Labs.Timesheets.Reports.Tracking.Queries
             return this;
         }
 
-        public FindTimesheetsByCriteriaQuery ApplyCoverage(DateRange coverage)
+        public FindTimesheetsByCriteriaQuery ApplyStartDate(DateTimeOffset date)
         {
-            Coverage = coverage;
+            StartDate = date;
+            return this;
+        }
+
+        public FindTimesheetsByCriteriaQuery ApplyEndDate(DateTimeOffset date)
+        {
+            EndDate = date;
             return this;
         }
 
@@ -47,7 +54,7 @@ namespace Labs.Timesheets.Reports.Tracking.Queries
 
         public FindTimesheetsByCriteriaResult Add(TimesheetBrief timesheet)
         {
-            return Add(new List<TimesheetBrief> { timesheet });
+            return Add(new List<TimesheetBrief> {timesheet});
         }
     }
 }

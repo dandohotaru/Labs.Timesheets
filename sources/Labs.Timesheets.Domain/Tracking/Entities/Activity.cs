@@ -11,7 +11,9 @@ namespace Labs.Timesheets.Domain.Tracking.Entities
         {
         }
 
-        public Guid DayId { get; protected set; }
+        public Guid ShiftId { get; protected set; }
+
+        public DateTimeOffset Date { get; protected set; }
 
         public string Notes { get; protected set; }
 
@@ -19,9 +21,15 @@ namespace Labs.Timesheets.Domain.Tracking.Entities
 
         public IList<Project> Projects { get; protected set; }
 
-        public Activity ApplyDay(Guid dayId)
+        public Activity ApplyShift(Guid shiftId)
         {
-            DayId = dayId;
+            ShiftId = shiftId;
+            return this;
+        }
+
+        public Activity ApplyDate(DateTimeOffset date)
+        {
+            Date = date;
             return this;
         }
 

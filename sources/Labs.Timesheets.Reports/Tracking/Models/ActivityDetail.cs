@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Labs.Timesheets.Domain.Common.Values;
 
 namespace Labs.Timesheets.Reports.Tracking.Models
 {
@@ -12,7 +11,9 @@ namespace Labs.Timesheets.Reports.Tracking.Models
 
         public string Description { get; set; }
 
-        public TimeRange Duration { get; set; }
+        public TimeSpan Start { get; set; }
+
+        public TimeSpan End { get; set; }
 
         public List<ProjectBrief> Projects { get; set; }
     }

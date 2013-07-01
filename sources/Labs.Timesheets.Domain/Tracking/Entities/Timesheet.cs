@@ -20,7 +20,7 @@ namespace Labs.Timesheets.Domain.Tracking.Entities
 
         public Guid CustomerId { get; protected set; }
 
-        public List<Day> Days { get; protected set; }
+        public List<Shift> Shifts { get; protected set; }
 
         public Timesheet ApplyName(string name)
         {
@@ -46,7 +46,7 @@ namespace Labs.Timesheets.Domain.Tracking.Entities
             return this;
         }
 
-        public Timesheet AddDays(IEnumerable<Day> days)
+        public Timesheet AddDays(IEnumerable<Shift> days)
         {
             if (days == null)
                 throw new BusinessException("The days to be added can not be null or empty.");
@@ -58,18 +58,18 @@ namespace Labs.Timesheets.Domain.Tracking.Entities
             return this;
         }
 
-        public Timesheet AddDays(Day day)
+        public Timesheet AddDays(Shift shift)
         {
-            if (day == null)
+            if (shift == null)
                 throw new BusinessException("The day to be added can not be null or empty.");
-            if (Days == null)
-                Days = new List<Day>();
+            if (Shifts == null)
+                Shifts = new List<Shift>();
 
-            Days.Add(day);
+            Shifts.Add(shift);
             return this;
         }
 
-        public Timesheet RemoveDays(IEnumerable<Day> days)
+        public Timesheet RemoveDays(IEnumerable<Shift> days)
         {
             if (days == null)
                 throw new BusinessException("The days to be removed can not be null or empty.");
@@ -81,16 +81,16 @@ namespace Labs.Timesheets.Domain.Tracking.Entities
             return this;
         }
 
-        public Timesheet RemoveDays(Day day)
+        public Timesheet RemoveDays(Shift shift)
         {
-            if (day == null)
+            if (shift == null)
                 throw new BusinessException("The day to be removed can not be null or empty.");
-            if (Days == null)
+            if (Shifts == null)
                 throw new BusinessException("The timesheet {0} has no associated days.", Name);
-            if (!Days.Contains(day))
-                throw new BusinessException("The timesheet {0} has no day having id {1}.", Name, day.Id);
+            if (!Shifts.Contains(shift))
+                throw new BusinessException("The timesheet {0} has no day having id {1}.", Name, shift.Id);
 
-            Days.Remove(day);
+            Shifts.Remove(shift);
             return this;
         }
     }

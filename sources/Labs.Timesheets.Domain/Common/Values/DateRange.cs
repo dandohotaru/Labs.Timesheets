@@ -5,20 +5,20 @@ namespace Labs.Timesheets.Domain.Common.Values
     [Serializable]
     public class DateRange : IValue
     {
-        public DateRange(DateTimeOffset from, DateTimeOffset to)
+        public DateRange(DateTimeOffset start, DateTimeOffset end)
         {
-            From = from;
-            To = to;
+            Start = start;
+            End = end;
         }
 
-        public DateTimeOffset From { get; protected set; }
+        public DateTimeOffset Start { get; protected set; }
 
-        public DateTimeOffset To { get; protected set; }
+        public DateTimeOffset End { get; protected set; }
 
         protected bool Equals(DateRange other)
         {
-            return From.Equals(other.From)
-                   && To.Equals(other.To);
+            return Start.Equals(other.Start)
+                   && End.Equals(other.End);
         }
 
         public override bool Equals(object other)
@@ -36,7 +36,7 @@ namespace Labs.Timesheets.Domain.Common.Values
         {
             unchecked
             {
-                return (From.GetHashCode()*397) ^ To.GetHashCode();
+                return (Start.GetHashCode()*397) ^ End.GetHashCode();
             }
         }
     }
