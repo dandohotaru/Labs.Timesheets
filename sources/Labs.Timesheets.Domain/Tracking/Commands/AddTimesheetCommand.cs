@@ -1,7 +1,5 @@
 ﻿using System;
 using Labs.Timesheets.Domain.Common.Commands;
-using Labs.Timesheets.Domain.Common.Values;
-using Labs.Timesheets.Domain.Tracking.Values;
 
 namespace Labs.Timesheets.Domain.Tracking.Commands
 {
@@ -14,7 +12,5 @@ namespace Labs.Timesheets.Domain.Tracking.Commands
         public string TimesheetName { get; set; }
 
         public string TimesheetDescription { get; set; }
-
-        public DateRange TimesheetCoverage { get; set; }
     }
 }

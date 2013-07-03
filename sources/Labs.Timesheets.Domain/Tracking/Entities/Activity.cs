@@ -25,6 +25,12 @@ namespace Labs.Timesheets.Domain.Tracking.Entities
             get { return End - Start; }
         }
 
+        public Activity ForTenant(Guid tenantId)
+        {
+            TenantId = tenantId;
+            return this;
+        }
+
         public Activity ApplyPeriod(DateTimeOffset start, DateTimeOffset end)
         {
             if (end <= start)
@@ -34,10 +40,9 @@ namespace Labs.Timesheets.Domain.Tracking.Entities
             return this;
         }
 
-        public Activity ApplyPeriod(DateTimeOffset start, double hours)
+        public Activity ApplyPeriod(DateTimeOffset start, TimeSpan duration)
         {
-            var end = start.Add(TimeSpan.FromHours(hours));
-            ApplyPeriod(start, end);
+            ApplyPeriod(start, start.Add(duration));
             return this;
         }
 

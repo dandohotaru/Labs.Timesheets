@@ -38,9 +38,9 @@ namespace Labs.Timesheets.Tests.Common
         {
             ServiceLocator.Current
                 .GetInstance<IStorageAdapter>()
-                .SeedJohnDoeCustomers()
-                .SeedJohnDoeTags()
-                .SeedJohnDoeActivities();
+                .SeedJohnDoe()
+                .SeedJackDoe()
+                .Save();
         }
 
         [TearDown]

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Labs.Timesheets.Domain.Common.Events;
-using Labs.Timesheets.Domain.Common.Values;
-using Labs.Timesheets.Domain.Tracking.Values;
 
 namespace Labs.Timesheets.Domain.Tracking.Events
 {
@@ -15,8 +13,6 @@ namespace Labs.Timesheets.Domain.Tracking.Events
         public List<Guid> ActivityProjectIds { get; set; }
 
         public DateTime ActivityDate { get; set; }
-
-        public TimeRange ActivityDuration { get; set; }
 
         public string ActivityDescription { get; set; }
     }

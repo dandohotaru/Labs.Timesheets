@@ -50,9 +50,10 @@
     <Compile Include="Common\Handlers\IWriteHandler.cs" />
     <Compile Include="Common\Entities\EntityBase.cs" />
     <Compile Include="Common\Adapters\IStorageAdapter.cs" />
-    <Compile Include="Tracking\Values\DateRange.cs" />
+    <Compile Include="Common\Values\DateRange.cs" />
     <Compile Include="Common\Values\IValue.cs" />
-    <Compile Include="Tracking\Values\TimeRange.cs" />
+    <Compile Include="Common\Values\TimeRange.cs" />
+    <Compile Include="Security\Entities\User.cs" />
     <Compile Include="Tracking\Commands\AddActivityCommand.cs" />
     <Compile Include="Tracking\Commands\AddTagCommand.cs" />
     <Compile Include="Tracking\Commands\AddTimesheetCommand.cs" />

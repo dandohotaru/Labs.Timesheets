@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Text;
-using Labs.Timesheets.Domain.Common.Values;
 
-namespace Labs.Timesheets.Domain.Tracking.Values
+namespace Labs.Timesheets.Domain.Common.Values
 {
     [Serializable]
     public class TimeRange : IValue, IEquatable<TimeRange>

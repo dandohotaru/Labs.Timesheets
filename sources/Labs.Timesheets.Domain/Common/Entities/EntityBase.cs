@@ -9,6 +9,8 @@ namespace Labs.Timesheets.Domain.Common.Entities
             Id = id;
         }
 
-        public Guid Id { get; set; }
+        public Guid Id { get; protected set; }
+
+        public Guid TenantId { get; protected set; }
     }
 }

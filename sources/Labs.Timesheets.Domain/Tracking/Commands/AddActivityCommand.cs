@@ -8,16 +8,16 @@ namespace Labs.Timesheets.Domain.Tracking.Commands
     {
         public Guid TenantId { get; set; }
 
+        public Guid ClientId { get; set; }
+        
         public Guid ActivityId { get; set; }
 
-        public Guid ClientId { get; set; }
-
         public List<Guid> TagIds { get; set; }
-
-        public string Description { get; set; }
 
         public DateTimeOffset Start { get; set; }
 
         public DateTimeOffset End { get; set; }
+
+        public string Description { get; set; }
     }
 }

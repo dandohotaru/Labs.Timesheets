@@ -9,7 +9,7 @@ namespace Labs.Timesheets.Reports.Common.Queries
 
     public interface IQuery
     {
-        Guid InitiatorId { get; }
+        Guid TenantId { get; }
 
         DateTimeOffset Stamp { get; }
     }

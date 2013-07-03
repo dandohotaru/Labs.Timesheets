@@ -3,6 +3,7 @@ using System.Linq;
 using Labs.Timesheets.Reports.Tracking.Queries;
 using Labs.Timesheets.Tests.Common;
 using Labs.Timesheets.Tests.Common.Extensions;
+using Labs.Timesheets.Tests.Seeding;
 using NUnit.Framework;
 
 namespace Labs.Timesheets.Tests.Tracking
@@ -14,8 +15,9 @@ namespace Labs.Timesheets.Tests.Tracking
         public void WhenActivitiesAreSearchedThenActivitiesCanBeRetrieved()
         {
             // Given
-            var today = DateTime.Now.Date;
+            var today = JohnDoeStubs.Date;
             var query = new FindActivitiesByDateQuery()
+                .ForTenant(JohnDoeStubs.UserId)
                 .ForReference(today);
 
             // When

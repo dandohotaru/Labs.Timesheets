@@ -20,6 +20,7 @@ namespace Labs.Timesheets.Reports.Tracking.Handlers
         public FindActivitiesByDateResult Handle(FindActivitiesByDateQuery request)
         {
             var query = from activity in Context.Query<Activity>()
+                        where activity.TenantId == request.TenantId
                         where activity.Start.Date <= request.Reference.Date
                               && activity.End.Date >= request.Reference.Date
                         select activity;

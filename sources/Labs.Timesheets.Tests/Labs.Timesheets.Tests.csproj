@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="Common\Extensions\DebugExtensions.cs" />
     <Compile Include="Common\FixtureBase.cs" />
+    <Compile Include="Seeding\JackDoeStubs.cs" />
     <Compile Include="Tracking\TagTests.cs" />
     <Compile Include="Tracking\ActivityTests.cs" />
     <Compile Include="Tracking\TimesheetTests.cs" />

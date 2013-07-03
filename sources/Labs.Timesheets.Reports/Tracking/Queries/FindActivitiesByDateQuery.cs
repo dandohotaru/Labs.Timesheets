@@ -10,6 +10,12 @@ namespace Labs.Timesheets.Reports.Tracking.Queries
     {
         public DateTimeOffset Reference { get; private set; }
 
+        public FindActivitiesByDateQuery ForTenant(Guid tenantId)
+        {
+            TenantId = tenantId;
+            return this;
+        }
+
         public FindActivitiesByDateQuery ForReference(DateTimeOffset date)
         {
             Reference = date;

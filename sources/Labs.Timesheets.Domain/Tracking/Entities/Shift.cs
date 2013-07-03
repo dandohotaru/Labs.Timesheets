@@ -4,7 +4,6 @@ using System.Linq;
 using Labs.Timesheets.Domain.Common.Entities;
 using Labs.Timesheets.Domain.Common.Exceptions;
 using Labs.Timesheets.Domain.Common.Values;
-using Labs.Timesheets.Domain.Tracking.Values;
 
 namespace Labs.Timesheets.Domain.Tracking.Entities
 {
