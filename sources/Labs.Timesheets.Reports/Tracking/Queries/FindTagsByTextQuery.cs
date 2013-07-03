@@ -10,22 +10,22 @@ namespace Labs.Timesheets.Reports.Tracking.Queries
         public string SearchText { get; set; }
     }
 
-    public class FindTagsByTextResult : ResultBase, IEnumerable<TagBrief>
+    public class FindTagsByTextResult : ResultBase, IEnumerable<TagInfo>
     {
-        public List<TagBrief> Tags { get; private set; }
+        public List<TagInfo> Tags { get; private set; }
 
-        public FindTagsByTextResult Add(TagBrief tag)
+        public FindTagsByTextResult Add(TagInfo tag)
         {
             if (Tags == null)
-                Tags = new List<TagBrief>();
+                Tags = new List<TagInfo>();
             Tags.Add(tag);
             return this;
         }
 
-        public FindTagsByTextResult Add(IEnumerable<TagBrief> tags)
+        public FindTagsByTextResult Add(IEnumerable<TagInfo> tags)
         {
             if (Tags == null)
-                Tags = new List<TagBrief>();
+                Tags = new List<TagInfo>();
             foreach (var tag in tags)
             {
                 Tags.Add(tag);
@@ -33,10 +33,10 @@ namespace Labs.Timesheets.Reports.Tracking.Queries
             return this;
         }
 
-        public IEnumerator<TagBrief> GetEnumerator()
+        public IEnumerator<TagInfo> GetEnumerator()
         {
             if (Tags == null)
-                Tags = new List<TagBrief>();
+                Tags = new List<TagInfo>();
             return Tags.GetEnumerator();
         }
 

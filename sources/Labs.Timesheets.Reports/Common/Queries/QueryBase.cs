@@ -16,8 +16,8 @@ namespace Labs.Timesheets.Reports.Common.Queries
             Stamp = DateTimeOffset.Now;
         }
 
-        public Guid TenantId { get; protected set; }
+        public Guid TenantId { get; set; }
 
-        public DateTimeOffset Stamp { get; protected set; }
+        public DateTimeOffset Stamp { get; set; }
     }
 }

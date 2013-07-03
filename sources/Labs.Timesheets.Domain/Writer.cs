@@ -41,17 +41,47 @@ namespace Labs.Timesheets.Domain
             }
         }
 
+        public void When(AddActivityCommand command, IStorageAdapter context)
+        {
+            new ActivityWriteHandler(context).Handle(command);
+        }
+
+        public void When(RemoveActivityCommand command, IStorageAdapter context)
+        {
+            new ActivityWriteHandler(context).Handle(command);
+        }
+
+        public void When(ModifyActivityCommand command, IStorageAdapter context)
+        {
+            new ActivityWriteHandler(context).Handle(command);
+        }
+
+        public void When(AddCustomerCommand command, IStorageAdapter context)
+        {
+            new CustomerWriteHandler(context).Handle(command);
+        }
+
+        public void When(RemoveCustomerCommand command, IStorageAdapter context)
+        {
+            new CustomerWriteHandler(context).Handle(command);
+        }
+
+        public void When(ModifyCustomerCommand command, IStorageAdapter context)
+        {
+            new CustomerWriteHandler(context).Handle(command);
+        }
+
         public void When(AddTagCommand command, IStorageAdapter context)
         {
             new TagWriteHandler(context).Handle(command);
         }
 
-        public void When(ModifyTagCommand command, IStorageAdapter context)
+        public void When(RemoveTagCommand command, IStorageAdapter context)
         {
             new TagWriteHandler(context).Handle(command);
         }
 
-        public void When(RemovedTagCommand command, IStorageAdapter context)
+        public void When(ModifyTagCommand command, IStorageAdapter context)
         {
             new TagWriteHandler(context).Handle(command);
         }

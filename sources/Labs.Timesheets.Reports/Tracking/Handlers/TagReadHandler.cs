@@ -25,7 +25,7 @@ namespace Labs.Timesheets.Reports.Tracking.Handlers
                         select tag;
 
             var views = from tag in query
-                        select new TagDetail
+                        select new TagInfo
                                    {
                                        TagId = tag.Id,
                                        TagName = tag.Name,
@@ -42,7 +42,7 @@ namespace Labs.Timesheets.Reports.Tracking.Handlers
                         select tag;
 
             var views = from tag in query
-                        select new TagBrief
+                        select new TagInfo
                                    {
                                        TagId = tag.Id,
                                        TagName = tag.Name,

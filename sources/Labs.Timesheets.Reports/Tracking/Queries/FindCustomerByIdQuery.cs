@@ -4,16 +4,16 @@ using Labs.Timesheets.Reports.Tracking.Models;
 
 namespace Labs.Timesheets.Reports.Tracking.Queries
 {
-    public class FindTimesheetByIdQuery : QueryBase<FindTimesheetByIdResult>
+    public class FindCustomerByIdQuery : QueryBase<FindCustomerByIdResult>
     {
         public Guid TimesheetId { get; set; }
     }
 
-    public class FindTimesheetByIdResult : ResultBase
+    public class FindCustomerByIdResult : ResultBase
     {
-        public TimesheetDetail Timesheet { get; protected set; }
+        public CustomerInfo Timesheet { get; protected set; }
 
-        public FindTimesheetByIdResult Set(TimesheetDetail detail)
+        public FindCustomerByIdResult Set(CustomerInfo detail)
         {
             Timesheet = detail;
             return this;

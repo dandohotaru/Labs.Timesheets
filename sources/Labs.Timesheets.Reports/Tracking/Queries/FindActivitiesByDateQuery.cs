@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using Labs.Timesheets.Reports.Common.Queries;
 using Labs.Timesheets.Reports.Tracking.Models;
@@ -8,7 +7,7 @@ namespace Labs.Timesheets.Reports.Tracking.Queries
 {
     public class FindActivitiesByDateQuery : QueryBase<FindActivitiesByDateResult>
     {
-        public DateTimeOffset Reference { get; private set; }
+        public DateTimeOffset Reference { get; set; }
 
         public FindActivitiesByDateQuery ForTenant(Guid tenantId)
         {
@@ -23,39 +22,16 @@ namespace Labs.Timesheets.Reports.Tracking.Queries
         }
     }
 
-    public class FindActivitiesByDateResult : ResultBase, IEnumerable<ActivityDetail>
+    public class FindActivitiesByDateResult : ResultBase
     {
-        public List<ActivityDetail> Activities { get; private set; }
+        public List<ActivityInfo> Activities { get; set; }
 
-        public FindActivitiesByDateResult Add(ActivityDetail activity)
+        public FindActivitiesByDateResult Add(IEnumerable<ActivityInfo> activities)
         {
             if (Activities == null)
-                Activities = new List<ActivityDetail>();
-            Activities.Add(activity);
+                Activities = new List<ActivityInfo>();
+            Activities.AddRange(activities);
             return this;
-        }
-
-        public FindActivitiesByDateResult Add(IEnumerable<ActivityDetail> activities)
-        {
-            if (Activities == null)
-                Activities = new List<ActivityDetail>();
-            foreach (var tag in activities)
-            {
-                Activities.Add(tag);
-            }
-            return this;
-        }
-
-        public IEnumerator<ActivityDetail> GetEnumerator()
-        {
-            if (Activities == null)
-                Activities = new List<ActivityDetail>();
-            return Activities.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
         }
     }
 }

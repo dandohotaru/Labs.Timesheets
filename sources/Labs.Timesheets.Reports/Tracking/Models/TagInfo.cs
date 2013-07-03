@@ -2,7 +2,7 @@
 
 namespace Labs.Timesheets.Reports.Tracking.Models
 {
-    public class TagDetail
+    public class TagInfo
     {
         public Guid TagId { get; set; }
 

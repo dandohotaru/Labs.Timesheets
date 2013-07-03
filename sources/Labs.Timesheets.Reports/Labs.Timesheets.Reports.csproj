@@ -45,22 +45,19 @@
     <Compile Include="Common\Queries\ResultBase.cs" />
     <Compile Include="Tracking\Handlers\TagReadHandler.cs" />
     <Compile Include="Tracking\Handlers\ActivityReadHandler.cs" />
-    <Compile Include="Tracking\Handlers\TimesheetReadHandler.cs" />
+    <Compile Include="Tracking\Handlers\CustomerReadHandler.cs" />
     <Compile Include="Common\Handlers\IReadHandler.cs" />
     <Compile Include="IReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reader.cs" />
-    <Compile Include="Tracking\Models\ActivityDetail.cs" />
-    <Compile Include="Tracking\Models\TagBrief.cs" />
-    <Compile Include="Tracking\Models\TagDetail.cs" />
-    <Compile Include="Tracking\Models\TimesheetBrief.cs" />
-    <Compile Include="Tracking\Models\TimesheetDetail.cs" />
+    <Compile Include="Tracking\Models\ActivityInfo.cs" />
+    <Compile Include="Tracking\Models\TagInfo.cs" />
+    <Compile Include="Tracking\Models\CustomerInfo.cs" />
     <Compile Include="Tracking\Queries\FindActivitiesByDateQuery.cs" />
     <Compile Include="Tracking\Queries\FindTagsByIdsQuery.cs" />
     <Compile Include="Tracking\Queries\FindTagsByTextQuery.cs" />
-    <Compile Include="Tracking\Queries\FindTimesheetByIdQuery.cs" />
-    <Compile Include="Tracking\Queries\FindTimesheetsByCriteriaQuery.cs" />
-    <Compile Include="Tracking\Queries\FindTimesheetsByTextQuery.cs" />
+    <Compile Include="Tracking\Queries\FindCustomerByIdQuery.cs" />
+    <Compile Include="Tracking\Queries\FindCustomersByTextQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Labs.Timesheets.Common\Labs.Timesheets.Common.csproj">

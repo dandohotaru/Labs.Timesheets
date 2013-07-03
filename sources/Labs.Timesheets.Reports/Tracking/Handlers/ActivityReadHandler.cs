@@ -25,16 +25,16 @@ namespace Labs.Timesheets.Reports.Tracking.Handlers
                               && activity.End.Date >= request.Reference.Date
                         select activity;
 
-            var views = from activity in query
-                        select new ActivityDetail
-                                   {
-                                       Id = activity.Id,
-                                       Start = activity.Start,
-                                       End = activity.End,
-                                       Notes = activity.Notes,
-                                   };
+            var details = from activity in query
+                          select new ActivityInfo
+                                     {
+                                         Id = activity.Id,
+                                         Start = activity.Start,
+                                         End = activity.End,
+                                         Notes = activity.Notes,
+                                     };
 
-            return new FindActivitiesByDateResult().Add(views);
+            return new FindActivitiesByDateResult().Add(details);
         }
     }
 }

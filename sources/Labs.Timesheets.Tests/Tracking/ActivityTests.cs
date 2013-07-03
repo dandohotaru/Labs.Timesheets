@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Labs.Timesheets.Reports.Tracking.Queries;
 using Labs.Timesheets.Tests.Common;
 using Labs.Timesheets.Tests.Common.Extensions;
@@ -12,20 +11,21 @@ namespace Labs.Timesheets.Tests.Tracking
     public class ActivityTests : FixtureBase
     {
         [Test]
-        public void WhenActivitiesAreSearchedThenActivitiesCanBeRetrieved()
+        public void WhenActivitiesAreSearchedThenActivitiesAreRetrieved()
         {
             // Given
-            var today = JohnDoeStubs.Date;
+            var date = JohnDoeStubs.Date;
             var query = new FindActivitiesByDateQuery()
                 .ForTenant(JohnDoeStubs.UserId)
-                .ForReference(today);
+                .ForReference(date);
 
             // When
             var result = Reader.Execute(query);
 
             // Then
             Assert.That(result, Is.Not.Null);
-            Assert.That(result.Any(), Is.True);
+            Assert.That(result.Activities, Is.Not.Null);
+            Assert.That(result.Activities.Any(), Is.True);
             result.Activities.Dump();
         }
     }

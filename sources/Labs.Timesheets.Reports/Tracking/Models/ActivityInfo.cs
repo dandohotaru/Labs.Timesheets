@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Labs.Timesheets.Reports.Tracking.Models
 {
-    public class ActivityDetail
+    public class ActivityInfo
     {
         public Guid Id { get; set; }
 
@@ -19,7 +19,7 @@ namespace Labs.Timesheets.Reports.Tracking.Models
 
         public string Notes { get; set; }
 
-        public List<TagBrief> Tags { get; set; }
+        public List<TagInfo> Tags { get; set; }
 
         public override string ToString()
         {

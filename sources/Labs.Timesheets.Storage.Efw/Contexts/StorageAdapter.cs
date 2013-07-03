@@ -22,11 +22,11 @@ namespace Labs.Timesheets.Storage.Efw.Contexts
             Configuration.ProxyCreationEnabled = false;
         }
 
-        public IDbSet<Tag> Projects { get; set; }
-
-        public IDbSet<Timesheet> Timesheets { get; set; }
-
         public IDbSet<Activity> Activities { get; set; }
+
+        public IDbSet<Customer> Customers { get; set; }
+
+        public IDbSet<Tag> Tags { get; set; }
 
         public IQueryable<TEntity> Query<TEntity>() where TEntity : class, IEntity
         {

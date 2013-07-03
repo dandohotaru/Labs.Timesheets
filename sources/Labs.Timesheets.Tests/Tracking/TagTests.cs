@@ -27,7 +27,7 @@ namespace Labs.Timesheets.Tests.Tracking
             Writer.Execute(addTagCommand);
 
             // When
-            var removedTagCommand = new RemovedTagCommand
+            var removedTagCommand = new RemoveTagCommand
                                         {
                                             TagId = tagId,
                                         };

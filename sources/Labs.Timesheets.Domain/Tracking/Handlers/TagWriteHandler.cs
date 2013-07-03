@@ -8,7 +8,7 @@ namespace Labs.Timesheets.Domain.Tracking.Handlers
 {
     public class TagWriteHandler
         : IWriteHandler<AddTagCommand>,
-          IWriteHandler<RemovedTagCommand>,
+          IWriteHandler<RemoveTagCommand>,
           IWriteHandler<ModifyTagCommand>
     {
         public TagWriteHandler(IStorageAdapter context)
@@ -31,7 +31,7 @@ namespace Labs.Timesheets.Domain.Tracking.Handlers
             Context.Add(tag);
         }
 
-        public void Handle(RemovedTagCommand command)
+        public void Handle(RemoveTagCommand command)
         {
             var tag = Context.Find<Tag>(command.TagId);
             if (tag == null)
