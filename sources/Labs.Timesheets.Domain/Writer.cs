@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Labs.Timesheets.Domain.Common.Adapters;
 using Labs.Timesheets.Domain.Common.Commands;
-using Labs.Timesheets.Domain.Tracking.Commands;
-using Labs.Timesheets.Domain.Tracking.Handlers;
+using Labs.Timesheets.Domain.Common.Handlers;
 
 namespace Labs.Timesheets.Domain
 {
@@ -12,17 +11,26 @@ namespace Labs.Timesheets.Domain
     {
         public Writer(Func<IStorageAdapter> contextBuilder)
         {
+            Handlers = new Dictionary<Type, Type>();
             ContextBuilder = contextBuilder;
         }
+
+        protected IDictionary<Type, Type> Handlers { get; set; }
 
         protected Func<IStorageAdapter> ContextBuilder { get; set; }
 
         public void Execute(ICommand command)
         {
+            // ToDo: Find another approach for resolving dynamic dependencies
             using (var context = ContextBuilder())
             {
-                var instance = (dynamic) this;
-                instance.When((dynamic) command, context);
+                var key = command.GetType();
+                if (!Handlers.ContainsKey(key))
+                    throw new KeyNotFoundException(key.Name);
+
+                var type = Handlers[key];
+                dynamic handler = Activator.CreateInstance(type, context);
+                handler.Handle((dynamic) command);
                 context.Save();
             }
         }
@@ -33,57 +41,26 @@ namespace Labs.Timesheets.Domain
             {
                 foreach (var command in commands.Distinct())
                 {
-                    var instance = (dynamic) this;
-                    instance.When((dynamic) command, context);
+                    var key = command.GetType();
+                    if (!Handlers.ContainsKey(key))
+                        throw new KeyNotFoundException(key.Name);
+
+                    var type = Handlers[key];
+                    dynamic handler = Activator.CreateInstance(type, context);
+                    handler.Handle((dynamic) command);
                 }
 
                 context.Save();
             }
         }
 
-        public void When(AddActivityCommand command, IStorageAdapter context)
+        public IWriter Register<TCommand, THandler>()
+            where TCommand : ICommand
+            where THandler : IWriteHandler<TCommand>
         {
-            new ActivityWriteHandler(context).Handle(command);
-        }
-
-        public void When(RemoveActivityCommand command, IStorageAdapter context)
-        {
-            new ActivityWriteHandler(context).Handle(command);
-        }
-
-        public void When(ModifyActivityCommand command, IStorageAdapter context)
-        {
-            new ActivityWriteHandler(context).Handle(command);
-        }
-
-        public void When(AddCustomerCommand command, IStorageAdapter context)
-        {
-            new CustomerWriteHandler(context).Handle(command);
-        }
-
-        public void When(RemoveCustomerCommand command, IStorageAdapter context)
-        {
-            new CustomerWriteHandler(context).Handle(command);
-        }
-
-        public void When(ModifyCustomerCommand command, IStorageAdapter context)
-        {
-            new CustomerWriteHandler(context).Handle(command);
-        }
-
-        public void When(AddTagCommand command, IStorageAdapter context)
-        {
-            new TagWriteHandler(context).Handle(command);
-        }
-
-        public void When(RemoveTagCommand command, IStorageAdapter context)
-        {
-            new TagWriteHandler(context).Handle(command);
-        }
-
-        public void When(ModifyTagCommand command, IStorageAdapter context)
-        {
-            new TagWriteHandler(context).Handle(command);
+            // ToDo: Implement caching for resolving handlers
+            Handlers.Add(typeof (TCommand), typeof (THandler));
+            return this;
         }
     }
 }

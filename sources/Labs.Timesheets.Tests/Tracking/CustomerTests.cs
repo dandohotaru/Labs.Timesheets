@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace Labs.Timesheets.Tests.Tracking
 {
     [TestFixture]
-    public class TimesheetTests : FixtureBase
+    public class CustomerTests : FixtureBase
     {
 
     }
