@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Labs.Timesheets.Domain.Common.Adapters;
 using Labs.Timesheets.Domain.Common.Commands;
@@ -9,58 +8,36 @@ namespace Labs.Timesheets.Domain
 {
     public class Writer : IWriter
     {
-        public Writer(Func<IStorageAdapter> contextBuilder)
+        public Writer(IResolverAdapter resolver)
         {
-            Handlers = new Dictionary<Type, Type>();
-            ContextBuilder = contextBuilder;
+            Resolver = resolver;
         }
 
-        protected IDictionary<Type, Type> Handlers { get; set; }
-
-        protected Func<IStorageAdapter> ContextBuilder { get; set; }
+        protected IResolverAdapter Resolver { get; set; }
 
         public void Execute(ICommand command)
         {
-            // ToDo: Find another approach for resolving dynamic dependencies
-            using (var context = ContextBuilder())
-            {
-                var key = command.GetType();
-                if (!Handlers.ContainsKey(key))
-                    throw new KeyNotFoundException(key.Name);
+            var context = Resolver.Get<IStorageAdapter>();
 
-                var type = Handlers[key];
-                dynamic handler = Activator.CreateInstance(type, context);
-                handler.Handle((dynamic) command);
-                context.Save();
-            }
+            var type = typeof (IWriteHandler<>).MakeGenericType(command.GetType());
+            var handler = (dynamic) Resolver.Get(type);
+            handler.Handle((dynamic) command);
+
+            context.Save();
         }
 
         public void Execute(IEnumerable<ICommand> commands)
         {
-            using (var context = ContextBuilder())
+            var context = Resolver.Get<IStorageAdapter>();
+
+            foreach (var command in commands.Distinct())
             {
-                foreach (var command in commands.Distinct())
-                {
-                    var key = command.GetType();
-                    if (!Handlers.ContainsKey(key))
-                        throw new KeyNotFoundException(key.Name);
-
-                    var type = Handlers[key];
-                    dynamic handler = Activator.CreateInstance(type, context);
-                    handler.Handle((dynamic) command);
-                }
-
-                context.Save();
+                var type = typeof (IWriteHandler<>).MakeGenericType(command.GetType());
+                var handler = (dynamic) Resolver.Get(type);
+                handler.Handle((dynamic) command);
             }
-        }
 
-        public IWriter Register<TCommand, THandler>()
-            where TCommand : ICommand
-            where THandler : IWriteHandler<TCommand>
-        {
-            // ToDo: Implement caching for resolving handlers
-            Handlers.Add(typeof (TCommand), typeof (THandler));
-            return this;
+            context.Save();
         }
     }
 }

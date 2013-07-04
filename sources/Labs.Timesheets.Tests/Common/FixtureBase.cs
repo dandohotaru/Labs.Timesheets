@@ -31,14 +31,15 @@ namespace Labs.Timesheets.Tests.Common
             kernel.Bind<IWriter>().To<Writer>().InSingletonScope();
             kernel.Bind<IReader>().To<Reader>().InSingletonScope();
 
+            kernel.Bind<IWriteHandler<AddTagCommand>>().To<TagWriteHandler>();
+            kernel.Bind<IWriteHandler<RemoveTagCommand>>().To<TagWriteHandler>();
+            kernel.Bind<IWriteHandler<ModifyTagCommand>>().To<TagWriteHandler>();
+
             var locator = new NinjectServiceLocator(kernel);
             ServiceLocator.SetLocatorProvider(() => locator);
 
             Reader = kernel.Get<IReader>();
-            Writer = kernel.Get<IWriter>()
-                .Register<AddTagCommand, TagWriteHandler>()
-                .Register<RemoveTagCommand, TagWriteHandler>()
-                .Register<ModifyTagCommand, TagWriteHandler>();
+            Writer = kernel.Get<IWriter>();
         }
 
         [SetUp]
