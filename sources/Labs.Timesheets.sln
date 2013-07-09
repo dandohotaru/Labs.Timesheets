@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labs.Timesheets.App.Console
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labs.Timesheets.Tests", "Labs.Timesheets.Tests\Labs.Timesheets.Tests.csproj", "{77B4F619-5776-4E37-8747-8E59879D348E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labs.Timesheets.Data.Efw", "Labs.Timesheets.Storage.Efw\Labs.Timesheets.Data.Efw.csproj", "{D90315BD-53D2-46EB-9C2D-211299E8D794}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labs.Timesheets.Data.Sql", "Labs.Timesheets.Storage.Efw\Labs.Timesheets.Data.Sql.csproj", "{D90315BD-53D2-46EB-9C2D-211299E8D794}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labs.Timesheets.Data.Rdb", "Labs.Timesheets.Storage.Rdb\Labs.Timesheets.Data.Rdb.csproj", "{9FF7853C-4C82-493F-A64D-710D29C007E7}"
 EndProject

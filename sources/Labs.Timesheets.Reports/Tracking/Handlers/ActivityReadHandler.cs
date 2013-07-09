@@ -10,12 +10,12 @@ namespace Labs.Timesheets.Reports.Tracking.Handlers
     public class ActivityReadHandler
         : IReadHandler<FindActivitiesByDateQuery, FindActivitiesByDateResult>
     {
-        public ActivityReadHandler(IStorageAdapter context)
+        public ActivityReadHandler(IStorage context)
         {
             Context = context;
         }
 
-        protected IStorageAdapter Context { get; set; }
+        protected IStorage Context { get; set; }
 
         public FindActivitiesByDateResult Handle(FindActivitiesByDateQuery request)
         {

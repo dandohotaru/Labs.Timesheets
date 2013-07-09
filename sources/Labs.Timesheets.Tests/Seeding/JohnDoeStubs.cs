@@ -12,7 +12,7 @@ namespace Labs.Timesheets.Tests.Seeding
         public static readonly Guid CustomerId = Guid.NewGuid();
         public static readonly string CustomerName = "Rndmzr";
 
-        public static IStorageAdapter SeedJackDoe(this IStorageAdapter context)
+        public static IStorage SeedJackDoe(this IStorage context)
         {
             var user = new User(UserId)
                 .ApplyFirstName("John")
@@ -28,7 +28,7 @@ namespace Labs.Timesheets.Tests.Seeding
             return context;
         }
 
-        private static IStorageAdapter SeedCustomers(this IStorageAdapter context)
+        private static IStorage SeedCustomers(this IStorage context)
         {
             var customer = new Customer(CustomerId)
                 .ApplyName(CustomerName)
@@ -38,13 +38,13 @@ namespace Labs.Timesheets.Tests.Seeding
             return context;
         }
 
-        private static IStorageAdapter SeedTags(this IStorageAdapter context)
+        private static IStorage SeedTags(this IStorage context)
         {
             // ToDo: Implement stubs;
             return context;
         }
 
-        private static IStorageAdapter SeedActivities(this IStorageAdapter context)
+        private static IStorage SeedActivities(this IStorage context)
         {
             var morning = new DateTime(Date.Year, Date.Month, Date.Day, 8, 0, 0);
 

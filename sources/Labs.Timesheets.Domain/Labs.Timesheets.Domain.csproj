@@ -49,7 +49,7 @@
     <Compile Include="Common\Exceptions\StorageException.cs" />
     <Compile Include="Common\Handlers\IWriteHandler.cs" />
     <Compile Include="Common\Entities\EntityBase.cs" />
-    <Compile Include="Common\Adapters\IStorageAdapter.cs" />
+    <Compile Include="Common\Adapters\IStorage.cs" />
     <Compile Include="Common\Values\DateRange.cs" />
     <Compile Include="Common\Values\IValue.cs" />
     <Compile Include="Common\Values\TimeRange.cs" />

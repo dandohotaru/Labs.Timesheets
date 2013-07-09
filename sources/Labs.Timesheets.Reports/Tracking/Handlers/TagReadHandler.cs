@@ -11,12 +11,12 @@ namespace Labs.Timesheets.Reports.Tracking.Handlers
         : IReadHandler<FindTagsByIdsQuery, FindTagsByIdsResult>,
           IReadHandler<FindTagsByTextQuery, FindTagsByTextResult>
     {
-        public TagReadHandler(IStorageAdapter context)
+        public TagReadHandler(IStorage context)
         {
             Context = context;
         }
 
-        protected IStorageAdapter Context { get; set; }
+        protected IStorage Context { get; set; }
 
         public FindTagsByIdsResult Handle(FindTagsByIdsQuery request)
         {

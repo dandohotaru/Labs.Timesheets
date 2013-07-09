@@ -8,12 +8,12 @@ namespace Labs.Timesheets.Reports
 {
     public class Reader : IReader
     {
-        public Reader(Func<IStorageAdapter> contextBuilder)
+        public Reader(Func<IStorage> contextBuilder)
         {
             ContextBuilder = contextBuilder;
         }
 
-        protected Func<IStorageAdapter> ContextBuilder { get; set; }
+        protected Func<IStorage> ContextBuilder { get; set; }
 
         public TResult Execute<TResult>(IQuery<TResult> query) where TResult : IResult
         {
@@ -24,17 +24,17 @@ namespace Labs.Timesheets.Reports
             }
         }
 
-        public FindTagsByIdsResult When(FindTagsByIdsQuery query, IStorageAdapter context)
+        public FindTagsByIdsResult When(FindTagsByIdsQuery query, IStorage context)
         {
             return new TagReadHandler(context).Handle(query);
         }
 
-        public FindTagsByTextResult When(FindTagsByTextQuery query, IStorageAdapter context)
+        public FindTagsByTextResult When(FindTagsByTextQuery query, IStorage context)
         {
             return new TagReadHandler(context).Handle(query);
         }
 
-        public FindActivitiesByDateResult When(FindActivitiesByDateQuery query, IStorageAdapter context)
+        public FindActivitiesByDateResult When(FindActivitiesByDateQuery query, IStorage context)
         {
             return new ActivityReadHandler(context).Handle(query);
         }

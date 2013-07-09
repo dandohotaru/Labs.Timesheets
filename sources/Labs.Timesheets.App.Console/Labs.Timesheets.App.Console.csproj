@@ -74,9 +74,9 @@
       <Project>{dfb0e46d-2fe8-48a0-8324-ea0018e19c7a}</Project>
       <Name>Labs.Timesheets.Reports</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Labs.Timesheets.Storage.Efw\Labs.Timesheets.Data.Efw.csproj">
+    <ProjectReference Include="..\Labs.Timesheets.Storage.Efw\Labs.Timesheets.Data.Sql.csproj">
       <Project>{d90315bd-53d2-46eb-9c2d-211299e8d794}</Project>
-      <Name>Labs.Timesheets.Data.Efw</Name>
+      <Name>Labs.Timesheets.Data.Sql</Name>
     </ProjectReference>
     <ProjectReference Include="..\Labs.Timesheets.Storage.Mem\Labs.Timesheets.Data.Mem.csproj">
       <Project>{079b8eae-d660-43a0-b3b6-76c9be5b724b}</Project>

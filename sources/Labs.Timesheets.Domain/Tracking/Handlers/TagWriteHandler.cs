@@ -11,12 +11,12 @@ namespace Labs.Timesheets.Domain.Tracking.Handlers
           IWriteHandler<RemoveTagCommand>,
           IWriteHandler<ModifyTagCommand>
     {
-        public TagWriteHandler(IStorageAdapter context)
+        public TagWriteHandler(IStorage context)
         {
             Context = context;
         }
 
-        protected IStorageAdapter Context { get; set; }
+        protected IStorage Context { get; set; }
 
         public void Handle(AddTagCommand command)
         {

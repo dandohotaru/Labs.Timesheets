@@ -1,75 +1,74 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using Labs.Timesheets.Domain.Common.Adapters;
 using Labs.Timesheets.Domain.Common.Entities;
-using Labs.Timesheets.Domain.Tracking.Entities;
+using Labs.Timesheets.Domain.Common.Exceptions;
 
-namespace Labs.Timesheets.Data.Efw.Contexts
+namespace Labs.Timesheets.Data.Mem.Contexts
 {
-    public class StorageAdapter : DbContext, IStorageAdapter
+    public class MemStorage : IStorage
     {
-        static StorageAdapter()
+        public MemStorage()
         {
-            Database.SetInitializer(new CreateDatabaseIfNotExists<StorageAdapter>());
+            Cache = new Dictionary<Guid, object>();
         }
 
-        public StorageAdapter()
-            : base("Name=EntitiesContext")
-        {
-            Configuration.LazyLoadingEnabled = false;
-            Configuration.ProxyCreationEnabled = false;
-        }
-
-        public IDbSet<Activity> Activities { get; set; }
-
-        public IDbSet<Customer> Customers { get; set; }
-
-        public IDbSet<Tag> Tags { get; set; }
+        protected IDictionary<Guid, object> Cache { get; set; }
 
         public IQueryable<TEntity> Query<TEntity>() where TEntity : class, IEntity
         {
-            return Set<TEntity>();
+            return Cache
+                .Values.OfType<TEntity>()
+                .AsQueryable();
         }
 
         public TEntity Find<TEntity>(Guid id) where TEntity : class, IEntity
         {
-            return Set<TEntity>().Find(id);
+            return Cache.ContainsKey(id) ? Cache[id] as TEntity : null;
         }
 
         public void Add<TEntity>(TEntity entity) where TEntity : class, IEntity
         {
-            Set<TEntity>().Add(entity);
+            if (Cache.ContainsKey(entity.Id))
+                throw new StorageException("The provided {0} id ({1}) already exists in the data store.", typeof (TEntity).Name, entity.Id);
+            Cache.Add(entity.Id, entity);
         }
 
         public void Add<TEntity>(IEnumerable<TEntity> entities) where TEntity : class, IEntity
         {
             foreach (var entity in entities)
             {
-                Set<TEntity>().Add(entity);
+                Add(entity);
             }
         }
 
         public void Remove<TEntity>(TEntity entity) where TEntity : class, IEntity
         {
-            Set<TEntity>().Remove(entity);
+            if (!Cache.ContainsKey(entity.Id))
+                throw new StorageException("The provided {0} id ({1}) does not exist in the data store.", typeof (TEntity).Name, entity.Id);
+            Cache.Remove(entity.Id);
         }
 
         public void Remove<TEntity>(IEnumerable<TEntity> entities) where TEntity : class, IEntity
         {
             foreach (var entity in entities)
             {
-                Set<TEntity>().Remove(entity);
+                Remove(entity);
             }
         }
 
         public void Save()
         {
-            SaveChanges();
         }
 
         public void Clear()
+        {
+            if (Cache != null)
+                Cache.Clear();
+        }
+
+        public void Dispose()
         {
         }
     }

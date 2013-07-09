@@ -16,8 +16,8 @@ namespace Labs.Timesheets.App.Console
         public static void Main(string[] args)
         {
             var kernel = new StandardKernel();
-            kernel.Bind<IStorageAdapter>().To<StorageAdapter>().InSingletonScope();
-            kernel.Bind<Func<IStorageAdapter>>().ToMethod(context => (() => context.Kernel.Get<IStorageAdapter>()));
+            kernel.Bind<IStorage>().To<MemStorage>().InSingletonScope();
+            kernel.Bind<Func<IStorage>>().ToMethod(context => (() => context.Kernel.Get<IStorage>()));
             kernel.Bind<IWriter>().To<Writer>().InSingletonScope();
             kernel.Bind<IReader>().To<Reader>().InSingletonScope();
 

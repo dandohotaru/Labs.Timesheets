@@ -18,7 +18,7 @@ namespace Labs.Timesheets.Domain
 
         public void Execute(ICommand command)
         {
-            var context = Resolver.Get<IStorageAdapter>();
+            var context = Resolver.Get<IStorage>();
 
             var type = typeof (IWriteHandler<>).MakeGenericType(command.GetType());
             var handler = (dynamic) Resolver.Get(type);
@@ -29,7 +29,7 @@ namespace Labs.Timesheets.Domain
 
         public void Execute(IEnumerable<ICommand> commands)
         {
-            var context = Resolver.Get<IStorageAdapter>();
+            var context = Resolver.Get<IStorage>();
 
             foreach (var command in commands.Distinct())
             {

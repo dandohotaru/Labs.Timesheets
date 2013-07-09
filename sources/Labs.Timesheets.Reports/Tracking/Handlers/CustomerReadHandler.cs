@@ -9,12 +9,12 @@ namespace Labs.Timesheets.Reports.Tracking.Handlers
         : IReadHandler<FindCustomerByIdQuery, FindCustomerByIdResult>,
           IReadHandler<FindCustomersByTextQuery, FindCustomersByTextResult>
     {
-        public CustomerReadHandler(IStorageAdapter context)
+        public CustomerReadHandler(IStorage context)
         {
             Context = context;
         }
 
-        protected IStorageAdapter Context { get; set; }
+        protected IStorage Context { get; set; }
 
         public FindCustomerByIdResult Handle(FindCustomerByIdQuery request)
         {

@@ -12,12 +12,12 @@ namespace Labs.Timesheets.Domain.Tracking.Handlers
           IWriteHandler<RemoveActivityCommand>,
           IWriteHandler<ModifyActivityCommand>
     {
-        public ActivityWriteHandler(IStorageAdapter context)
+        public ActivityWriteHandler(IStorage context)
         {
             Context = context;
         }
 
-        protected IStorageAdapter Context { get; set; }
+        protected IStorage Context { get; set; }
 
         public void Handle(AddActivityCommand command)
         {

@@ -5,7 +5,7 @@ using Labs.Timesheets.Domain.Common.Entities;
 
 namespace Labs.Timesheets.Domain.Common.Adapters
 {
-    public interface IStorageAdapter : IDisposable
+    public interface IStorage : IDisposable
     {
         IQueryable<TEntity> Query<TEntity>() where TEntity : class, IEntity;
 

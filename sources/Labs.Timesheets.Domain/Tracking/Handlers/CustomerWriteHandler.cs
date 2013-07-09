@@ -10,12 +10,12 @@ namespace Labs.Timesheets.Domain.Tracking.Handlers
           IWriteHandler<RemoveCustomerCommand>,
           IWriteHandler<ModifyCustomerCommand>
     {
-        public CustomerWriteHandler(IStorageAdapter context)
+        public CustomerWriteHandler(IStorage context)
         {
             Context = context;
         }
 
-        protected IStorageAdapter Context { get; set; }
+        protected IStorage Context { get; set; }
 
         public void Handle(AddCustomerCommand command)
         {
