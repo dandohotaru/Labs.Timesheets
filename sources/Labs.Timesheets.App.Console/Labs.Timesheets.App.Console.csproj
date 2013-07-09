@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CommonServiceLocator.NinjectAdapter">
-      <HintPath>..\packages\XActDependency.CommonServiceLocator.NinjectAdapter.3.0.0.1\lib\net35-Client\CommonServiceLocator.NinjectAdapter.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -65,6 +62,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Labs.Timesheets.Adapters\Labs.Timesheets.Adapters.csproj">
+      <Project>{3cc5116e-553a-4ba8-a7d2-902457912e84}</Project>
+      <Name>Labs.Timesheets.Adapters</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Labs.Timesheets.Domain\Labs.Timesheets.Domain.csproj">
       <Project>{ec7e9761-15d4-4113-b8ab-702598f501d3}</Project>
       <Name>Labs.Timesheets.Domain</Name>
@@ -73,17 +74,17 @@
       <Project>{dfb0e46d-2fe8-48a0-8324-ea0018e19c7a}</Project>
       <Name>Labs.Timesheets.Reports</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Labs.Timesheets.Storage.Efw\Labs.Timesheets.Storage.Efw.csproj">
+    <ProjectReference Include="..\Labs.Timesheets.Storage.Efw\Labs.Timesheets.Data.Efw.csproj">
       <Project>{d90315bd-53d2-46eb-9c2d-211299e8d794}</Project>
-      <Name>Labs.Timesheets.Storage.Efw</Name>
+      <Name>Labs.Timesheets.Data.Efw</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Labs.Timesheets.Storage.Mem\Labs.Timesheets.Storage.Mem.csproj">
+    <ProjectReference Include="..\Labs.Timesheets.Storage.Mem\Labs.Timesheets.Data.Mem.csproj">
       <Project>{079b8eae-d660-43a0-b3b6-76c9be5b724b}</Project>
-      <Name>Labs.Timesheets.Storage.Mem</Name>
+      <Name>Labs.Timesheets.Data.Mem</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Labs.Timesheets.Storage.Rdb\Labs.Timesheets.Storage.Rdb.csproj">
+    <ProjectReference Include="..\Labs.Timesheets.Storage.Rdb\Labs.Timesheets.Data.Rdb.csproj">
       <Project>{9ff7853c-4c82-493f-a64d-710d29c007e7}</Project>
-      <Name>Labs.Timesheets.Storage.Rdb</Name>
+      <Name>Labs.Timesheets.Data.Rdb</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

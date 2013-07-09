@@ -5,7 +5,7 @@ using Labs.Timesheets.Domain.Common.Adapters;
 using Labs.Timesheets.Domain.Common.Entities;
 using Labs.Timesheets.Domain.Common.Exceptions;
 
-namespace Labs.Timesheets.Storage.Mem.Contexts
+namespace Labs.Timesheets.Data.Mem.Contexts
 {
     public class StorageAdapter : IStorageAdapter
     {

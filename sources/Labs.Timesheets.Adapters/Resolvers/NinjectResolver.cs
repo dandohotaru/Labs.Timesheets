@@ -1,12 +1,12 @@
 ﻿using System;
-using Labs.Timesheets.Domain.Common.Adapters;
+using Labs.Timesheets.Common.Resolvers;
 using Ninject;
 
-namespace Labs.Timesheets.Tests.Common.Resolvers
+namespace Labs.Timesheets.Adapters.Resolvers
 {
-    public class ResolverAdapter : IResolverAdapter
+    public class NinjectResolver : IResolver
     {
-        public ResolverAdapter(IKernel kernel)
+        public NinjectResolver(IKernel kernel)
         {
             Kernel = kernel;
         }

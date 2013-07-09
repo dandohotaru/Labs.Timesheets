@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Adapters\IResolverAdapter.cs" />
     <Compile Include="Common\Commands\CommandBase.cs" />
     <Compile Include="Common\Commands\ICommand.cs" />
     <Compile Include="Common\Entities\IEntity.cs" />

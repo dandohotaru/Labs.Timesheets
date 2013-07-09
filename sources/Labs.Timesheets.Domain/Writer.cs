@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Labs.Timesheets.Common.Resolvers;
 using Labs.Timesheets.Domain.Common.Adapters;
 using Labs.Timesheets.Domain.Common.Commands;
 using Labs.Timesheets.Domain.Common.Handlers;
@@ -8,12 +9,12 @@ namespace Labs.Timesheets.Domain
 {
     public class Writer : IWriter
     {
-        public Writer(IResolverAdapter resolver)
+        public Writer(IResolver resolver)
         {
             Resolver = resolver;
         }
 
-        protected IResolverAdapter Resolver { get; set; }
+        protected IResolver Resolver { get; set; }
 
         public void Execute(ICommand command)
         {

@@ -6,7 +6,7 @@ using Labs.Timesheets.Domain.Common.Adapters;
 using Labs.Timesheets.Domain.Common.Entities;
 using Labs.Timesheets.Domain.Tracking.Entities;
 
-namespace Labs.Timesheets.Storage.Efw.Contexts
+namespace Labs.Timesheets.Data.Efw.Contexts
 {
     public class StorageAdapter : DbContext, IStorageAdapter
     {
