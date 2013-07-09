@@ -20,7 +20,7 @@ namespace Labs.Timesheets.Tests.Tracking
                 .ForReference(date);
 
             // When
-            var result = Reader.Search(query);
+            var result = Reader.Fetch(query);
 
             // Then
             Assert.That(result, Is.Not.Null);

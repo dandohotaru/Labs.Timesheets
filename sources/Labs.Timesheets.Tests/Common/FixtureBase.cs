@@ -5,15 +5,12 @@ using Labs.Timesheets.Data.Mem.Contexts;
 using Labs.Timesheets.Domain;
 using Labs.Timesheets.Domain.Common.Adapters;
 using Labs.Timesheets.Domain.Common.Handlers;
-using Labs.Timesheets.Domain.Tracking.Commands;
-using Labs.Timesheets.Domain.Tracking.Handlers;
 using Labs.Timesheets.Reports;
 using Labs.Timesheets.Reports.Common.Handlers;
-using Labs.Timesheets.Reports.Tracking.Handlers;
-using Labs.Timesheets.Reports.Tracking.Queries;
 using Labs.Timesheets.Tests.Seeding;
 using NUnit.Framework;
 using Ninject;
+using Ninject.Extensions.Conventions;
 
 namespace Labs.Timesheets.Tests.Common
 {
@@ -34,13 +31,17 @@ namespace Labs.Timesheets.Tests.Common
             kernel.Bind<IWriter>().To<Writer>().InSingletonScope();
             kernel.Bind<IReader>().To<Reader>().InSingletonScope();
 
-            kernel.Bind<IWriteHandler<AddTagCommand>>().To<TagWriteHandler>();
-            kernel.Bind<IWriteHandler<RemoveTagCommand>>().To<TagWriteHandler>();
-            kernel.Bind<IWriteHandler<ModifyTagCommand>>().To<TagWriteHandler>();
+            kernel.Bind(p => p
+                .FromAssemblyContaining<IWriter>()
+                .SelectAllClasses()
+                .InheritedFrom(typeof (IWriteHandler<>))
+                .BindAllInterfaces());
 
-            kernel.Bind<IReadHandler<FindTagsByIdsQuery, FindTagsByIdsResult>>().To<TagReadHandler>();
-            kernel.Bind<IReadHandler<FindTagsByTextQuery, FindTagsByTextResult>>().To<TagReadHandler>();
-            kernel.Bind<IReadHandler<FindActivitiesByDateQuery, FindActivitiesByDateResult>>().To<ActivityReadHandler>();
+            kernel.Bind(p => p
+                .FromAssemblyContaining<IReader>()
+                .SelectAllClasses()
+                .InheritedFrom(typeof (IReadHandler<,>))
+                .BindAllInterfaces());
 
             Resolver = kernel.Get<IResolver>();
             Reader = kernel.Get<IReader>();

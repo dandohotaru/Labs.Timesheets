@@ -13,7 +13,7 @@ namespace Labs.Timesheets.Reports
 
         protected IResolver Resolver { get; private set; }
 
-        public TResult Search<TResult>(IQuery<TResult> query) where TResult : IResult
+        public TResult Fetch<TResult>(IQuery<TResult> query) where TResult : IResult
         {
             var type = typeof (IReadHandler<,>).MakeGenericType(query.GetType(), typeof (TResult));
             var handler = (dynamic) Resolver.Get(type);

@@ -37,7 +37,7 @@ namespace Labs.Timesheets.Tests.Tracking
             var findTagsByIdsQuery = new FindTagsByIdsQuery()
                 .AddTagId(tagId);
             var result = Reader
-                .Search(findTagsByIdsQuery)
+                .Fetch(findTagsByIdsQuery)
                 .SingleOrDefault();
             Assert.That(result, Is.Null);
         }
@@ -61,7 +61,7 @@ namespace Labs.Timesheets.Tests.Tracking
             var findTagsByIdsQuery = new FindTagsByIdsQuery()
                 .AddTagId(tagId);
             var result = Reader
-                .Search(findTagsByIdsQuery)
+                .Fetch(findTagsByIdsQuery)
                 .Single();
             Assert.That(result.TagId, Is.EqualTo(tagId));
         }
@@ -92,7 +92,7 @@ namespace Labs.Timesheets.Tests.Tracking
                 .AddTagId(firstCommand.TagId)
                 .AddTagId(secondCommand.TagId);
             var result = Reader
-                .Search(findTagsByIdsQuery);
+                .Fetch(findTagsByIdsQuery);
             Assert.That(result, Is.Not.Null);
             Assert.That(result.Tags, Is.Not.Null);
             Assert.That(result.Tags.Count, Is.EqualTo(1));
