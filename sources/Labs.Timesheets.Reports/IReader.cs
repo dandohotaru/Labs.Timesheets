@@ -4,6 +4,6 @@ namespace Labs.Timesheets.Reports
 {
     public interface IReader
     {
-        TResult Execute<TResult>(IQuery<TResult> query) where TResult : IResult;
+        TResult Search<TResult>(IQuery<TResult> query) where TResult : IResult;
     }
 }

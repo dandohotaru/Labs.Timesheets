@@ -14,9 +14,9 @@ namespace Labs.Timesheets.Domain
             Resolver = resolver;
         }
 
-        protected IResolver Resolver { get; set; }
+        protected IResolver Resolver { get; private set; }
 
-        public void Execute(ICommand command)
+        public void Send(ICommand command)
         {
             var context = Resolver.Get<IStorage>();
 
@@ -27,7 +27,7 @@ namespace Labs.Timesheets.Domain
             context.Save();
         }
 
-        public void Execute(IEnumerable<ICommand> commands)
+        public void Send(IEnumerable<ICommand> commands)
         {
             var context = Resolver.Get<IStorage>();
 

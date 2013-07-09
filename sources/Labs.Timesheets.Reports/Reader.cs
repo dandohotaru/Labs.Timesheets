@@ -1,42 +1,25 @@
-using System;
-using Labs.Timesheets.Domain.Common.Adapters;
+using Labs.Timesheets.Common.Resolvers;
+using Labs.Timesheets.Reports.Common.Handlers;
 using Labs.Timesheets.Reports.Common.Queries;
-using Labs.Timesheets.Reports.Tracking.Handlers;
-using Labs.Timesheets.Reports.Tracking.Queries;
 
 namespace Labs.Timesheets.Reports
 {
     public class Reader : IReader
     {
-        public Reader(Func<IStorage> contextBuilder)
+        public Reader(IResolver resolver)
         {
-            ContextBuilder = contextBuilder;
+            Resolver = resolver;
         }
 
-        protected Func<IStorage> ContextBuilder { get; set; }
+        protected IResolver Resolver { get; private set; }
 
-        public TResult Execute<TResult>(IQuery<TResult> query) where TResult : IResult
+        public TResult Search<TResult>(IQuery<TResult> query) where TResult : IResult
         {
-            using (var context = ContextBuilder())
-            {
-                var instance = (dynamic) this;
-                return instance.When((dynamic) query, context);
-            }
-        }
+            var type = typeof (IReadHandler<,>).MakeGenericType(query.GetType(), typeof (TResult));
+            var handler = (dynamic) Resolver.Get(type);
+            var result = (TResult) handler.Handle((dynamic) query);
 
-        public FindTagsByIdsResult When(FindTagsByIdsQuery query, IStorage context)
-        {
-            return new TagReadHandler(context).Handle(query);
-        }
-
-        public FindTagsByTextResult When(FindTagsByTextQuery query, IStorage context)
-        {
-            return new TagReadHandler(context).Handle(query);
-        }
-
-        public FindActivitiesByDateResult When(FindActivitiesByDateQuery query, IStorage context)
-        {
-            return new ActivityReadHandler(context).Handle(query);
+            return result;
         }
     }
 }

@@ -24,20 +24,20 @@ namespace Labs.Timesheets.Tests.Tracking
                                         TagName = "TestProject",
                                         TagNotes = "Here be dragons",
                                     };
-            Writer.Execute(addTagCommand);
+            Writer.Send(addTagCommand);
 
             // When
             var removedTagCommand = new RemoveTagCommand
                                         {
                                             TagId = tagId,
                                         };
-            Writer.Execute(removedTagCommand);
+            Writer.Send(removedTagCommand);
 
             // Then
             var findTagsByIdsQuery = new FindTagsByIdsQuery()
                 .AddTagId(tagId);
             var result = Reader
-                .Execute(findTagsByIdsQuery)
+                .Search(findTagsByIdsQuery)
                 .SingleOrDefault();
             Assert.That(result, Is.Null);
         }
@@ -55,13 +55,13 @@ namespace Labs.Timesheets.Tests.Tracking
                                     };
 
             // When
-            Writer.Execute(addTagCommand);
+            Writer.Send(addTagCommand);
 
             // Then l
             var findTagsByIdsQuery = new FindTagsByIdsQuery()
                 .AddTagId(tagId);
             var result = Reader
-                .Execute(findTagsByIdsQuery)
+                .Search(findTagsByIdsQuery)
                 .Single();
             Assert.That(result.TagId, Is.EqualTo(tagId));
         }
@@ -85,14 +85,14 @@ namespace Labs.Timesheets.Tests.Tracking
                                    firstCommand,
                                    secondCommand,
                                };
-            Writer.Execute(commands);
+            Writer.Send(commands);
 
             // Then 
             var findTagsByIdsQuery = new FindTagsByIdsQuery()
                 .AddTagId(firstCommand.TagId)
                 .AddTagId(secondCommand.TagId);
             var result = Reader
-                .Execute(findTagsByIdsQuery);
+                .Search(findTagsByIdsQuery);
             Assert.That(result, Is.Not.Null);
             Assert.That(result.Tags, Is.Not.Null);
             Assert.That(result.Tags.Count, Is.EqualTo(1));

@@ -8,6 +8,9 @@ using Labs.Timesheets.Domain.Common.Handlers;
 using Labs.Timesheets.Domain.Tracking.Commands;
 using Labs.Timesheets.Domain.Tracking.Handlers;
 using Labs.Timesheets.Reports;
+using Labs.Timesheets.Reports.Common.Handlers;
+using Labs.Timesheets.Reports.Tracking.Handlers;
+using Labs.Timesheets.Reports.Tracking.Queries;
 using Labs.Timesheets.Tests.Seeding;
 using NUnit.Framework;
 using Ninject;
@@ -34,6 +37,10 @@ namespace Labs.Timesheets.Tests.Common
             kernel.Bind<IWriteHandler<AddTagCommand>>().To<TagWriteHandler>();
             kernel.Bind<IWriteHandler<RemoveTagCommand>>().To<TagWriteHandler>();
             kernel.Bind<IWriteHandler<ModifyTagCommand>>().To<TagWriteHandler>();
+
+            kernel.Bind<IReadHandler<FindTagsByIdsQuery, FindTagsByIdsResult>>().To<TagReadHandler>();
+            kernel.Bind<IReadHandler<FindTagsByTextQuery, FindTagsByTextResult>>().To<TagReadHandler>();
+            kernel.Bind<IReadHandler<FindActivitiesByDateQuery, FindActivitiesByDateResult>>().To<ActivityReadHandler>();
 
             Resolver = kernel.Get<IResolver>();
             Reader = kernel.Get<IReader>();

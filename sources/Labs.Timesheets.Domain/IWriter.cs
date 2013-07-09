@@ -5,8 +5,8 @@ namespace Labs.Timesheets.Domain
 {
     public interface IWriter
     {
-        void Execute(ICommand command);
+        void Send(ICommand command);
 
-        void Execute(IEnumerable<ICommand> commands);
+        void Send(IEnumerable<ICommand> commands);
     }
 }

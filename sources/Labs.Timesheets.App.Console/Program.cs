@@ -39,7 +39,7 @@ namespace Labs.Timesheets.App.Console
                                         InitiatorId = Guid.NewGuid(),
                                     };
             var writer = ServiceLocator.Current.GetInstance<IWriter>();
-            writer.Execute(addTagCommand);
+            writer.Send(addTagCommand);
         }
 
         private static void FindProjectTest(Guid projectId)
@@ -48,7 +48,7 @@ namespace Labs.Timesheets.App.Console
             var findProjectQuery = new FindTagsByIdsQuery()
                 .AddTagId(projectId);
             var project = reader
-                .Execute(findProjectQuery);
+                .Search(findProjectQuery);
             if (project == null)
                 throw new Exception("The tag could not be found based on id");
         }
