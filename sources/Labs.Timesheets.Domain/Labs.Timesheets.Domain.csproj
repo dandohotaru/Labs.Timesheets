@@ -67,10 +67,8 @@
     <Compile Include="Tracking\Entities\Customer.cs" />
     <Compile Include="Tracking\Entities\Tag.cs" />
     <Compile Include="Tracking\Handlers\CustomerWriteHandler.cs" />
-    <Compile Include="Writer.cs" />
     <Compile Include="Tracking\Handlers\TagWriteHandler.cs" />
     <Compile Include="Tracking\Handlers\ActivityWriteHandler.cs" />
-    <Compile Include="IWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

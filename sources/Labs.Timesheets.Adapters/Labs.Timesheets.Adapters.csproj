@@ -47,6 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dispatchers\IReader.cs" />
+    <Compile Include="Dispatchers\IWriter.cs" />
+    <Compile Include="Dispatchers\Reader.cs" />
+    <Compile Include="Dispatchers\Writer.cs" />
     <Compile Include="Locators\NinjectLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resolvers\NinjectResolver.cs" />

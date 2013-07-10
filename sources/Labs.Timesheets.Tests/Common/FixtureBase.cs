@@ -1,11 +1,10 @@
 ﻿using System;
+using Labs.Timesheets.Adapters.Dispatchers;
 using Labs.Timesheets.Adapters.Resolvers;
 using Labs.Timesheets.Common.Resolvers;
 using Labs.Timesheets.Data.Mem.Contexts;
-using Labs.Timesheets.Domain;
 using Labs.Timesheets.Domain.Common.Adapters;
 using Labs.Timesheets.Domain.Common.Handlers;
-using Labs.Timesheets.Reports;
 using Labs.Timesheets.Reports.Common.Handlers;
 using Labs.Timesheets.Tests.Seeding;
 using NUnit.Framework;

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Labs.Timesheets.Domain.Common.Commands;
 
-namespace Labs.Timesheets.Domain
+namespace Labs.Timesheets.Adapters.Dispatchers
 {
     public interface IWriter
     {

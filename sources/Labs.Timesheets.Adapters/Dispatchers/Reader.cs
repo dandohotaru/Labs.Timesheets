@@ -2,7 +2,7 @@ using Labs.Timesheets.Common.Resolvers;
 using Labs.Timesheets.Reports.Common.Handlers;
 using Labs.Timesheets.Reports.Common.Queries;
 
-namespace Labs.Timesheets.Reports
+namespace Labs.Timesheets.Adapters.Dispatchers
 {
     public class Reader : IReader
     {

@@ -1,6 +1,6 @@
 using Labs.Timesheets.Reports.Common.Queries;
 
-namespace Labs.Timesheets.Reports
+namespace Labs.Timesheets.Adapters.Dispatchers
 {
     public interface IReader
     {

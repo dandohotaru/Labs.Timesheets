@@ -5,7 +5,7 @@ using Labs.Timesheets.Domain.Common.Adapters;
 using Labs.Timesheets.Domain.Common.Commands;
 using Labs.Timesheets.Domain.Common.Handlers;
 
-namespace Labs.Timesheets.Domain
+namespace Labs.Timesheets.Adapters.Dispatchers
 {
     public class Writer : IWriter
     {
