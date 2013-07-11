@@ -1,5 +1,4 @@
 ﻿using System;
-using Labs.Timesheets.Common.Resolvers;
 using Ninject;
 
 namespace Labs.Timesheets.Adapters.Resolvers

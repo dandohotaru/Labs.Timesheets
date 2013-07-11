@@ -11,14 +11,14 @@ namespace Labs.Timesheets.Tests.Common.Extensions
             var collection = instance as IEnumerable;
             if (collection != null)
             {
-                When(collection);
+                Dump(collection);
                 return;
             }
 
-            When(instance);
+            Dump((object) instance);
         }
 
-        private static void When(IEnumerable instance)
+        private static void Dump(IEnumerable instance)
         {
             var builder = new StringBuilder();
             foreach (var item in instance)
@@ -29,7 +29,7 @@ namespace Labs.Timesheets.Tests.Common.Extensions
             Console.WriteLine(builder.ToString());
         }
 
-        private static void When(object instance)
+        private static void Dump(object instance)
         {
             var builder = new StringBuilder()
                 .Append(instance);

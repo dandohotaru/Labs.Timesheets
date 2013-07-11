@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Labs.Timesheets.Common.Resolvers
+namespace Labs.Timesheets.Adapters.Resolvers
 {
     public interface IResolver
     {

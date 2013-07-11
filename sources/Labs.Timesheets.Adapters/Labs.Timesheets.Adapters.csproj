@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dispatchers\IReader.cs" />
+    <Compile Include="Resolvers\IResolver.cs" />
     <Compile Include="Dispatchers\IWriter.cs" />
     <Compile Include="Dispatchers\Reader.cs" />
     <Compile Include="Dispatchers\Writer.cs" />

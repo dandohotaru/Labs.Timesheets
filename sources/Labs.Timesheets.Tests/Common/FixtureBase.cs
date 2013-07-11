@@ -1,7 +1,6 @@
 ﻿using System;
 using Labs.Timesheets.Adapters.Dispatchers;
 using Labs.Timesheets.Adapters.Resolvers;
-using Labs.Timesheets.Common.Resolvers;
 using Labs.Timesheets.Data.Mem.Contexts;
 using Labs.Timesheets.Domain.Common.Adapters;
 using Labs.Timesheets.Domain.Common.Handlers;
@@ -10,6 +9,7 @@ using Labs.Timesheets.Tests.Seeding;
 using NUnit.Framework;
 using Ninject;
 using Ninject.Extensions.Conventions;
+using Ninject.Extensions.NamedScope;
 
 namespace Labs.Timesheets.Tests.Common
 {
@@ -27,17 +27,17 @@ namespace Labs.Timesheets.Tests.Common
             kernel.Bind<IResolver>().To<NinjectResolver>().InSingletonScope();
             kernel.Bind<IStorage>().To<MemStorage>().InSingletonScope();
             kernel.Bind<Func<IStorage>>().ToMethod(context => (() => context.Kernel.Get<IStorage>()));
-            kernel.Bind<IWriter>().To<Writer>().InSingletonScope();
-            kernel.Bind<IReader>().To<Reader>().InSingletonScope();
+            kernel.Bind<IWriter>().To<Writer>();
+            kernel.Bind<IReader>().To<Reader>();
 
             kernel.Bind(p => p
-                .FromAssemblyContaining<IWriter>()
+                .FromAssemblyContaining(typeof(IWriteHandler<>))
                 .SelectAllClasses()
                 .InheritedFrom(typeof (IWriteHandler<>))
                 .BindAllInterfaces());
 
             kernel.Bind(p => p
-                .FromAssemblyContaining<IReader>()
+                .FromAssemblyContaining(typeof(IReadHandler<,>))
                 .SelectAllClasses()
                 .InheritedFrom(typeof (IReadHandler<,>))
                 .BindAllInterfaces());
