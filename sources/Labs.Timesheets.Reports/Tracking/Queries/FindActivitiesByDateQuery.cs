@@ -1,19 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Labs.Timesheets.Reports.Common.Queries;
 using Labs.Timesheets.Reports.Tracking.Models;
 
 namespace Labs.Timesheets.Reports.Tracking.Queries
 {
-    public class FindActivitiesByDateQuery : QueryBase<FindActivitiesByDateResult>
+    public class FindActivitiesByDateQuery : QueryBase<FindActivitiesByDateQuery, FindActivitiesByDateResult>
     {
-        public DateTimeOffset Reference { get; set; }
-
-        public FindActivitiesByDateQuery ForTenant(Guid tenantId)
-        {
-            TenantId = tenantId;
-            return this;
-        }
+        public DateTimeOffset Reference { get; protected set; }
 
         public FindActivitiesByDateQuery ForReference(DateTimeOffset date)
         {
@@ -24,14 +19,13 @@ namespace Labs.Timesheets.Reports.Tracking.Queries
 
     public class FindActivitiesByDateResult : ResultBase
     {
-        public List<ActivityInfo> Activities { get; set; }
-
-        public FindActivitiesByDateResult Add(IEnumerable<ActivityInfo> activities)
+        public FindActivitiesByDateResult(IEnumerable<ActivityInfo> activities)
         {
-            if (Activities == null)
-                Activities = new List<ActivityInfo>();
-            Activities.AddRange(activities);
-            return this;
+            if (activities == null)
+                throw new ArgumentNullException("activities");
+            Activities = activities.ToList();
         }
+
+        public List<ActivityInfo> Activities { get; protected set; }
     }
 }

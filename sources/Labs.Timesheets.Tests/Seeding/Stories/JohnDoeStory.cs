@@ -3,16 +3,29 @@ using Labs.Timesheets.Domain.Common.Adapters;
 using Labs.Timesheets.Domain.Security.Entities;
 using Labs.Timesheets.Domain.Tracking.Entities;
 
-namespace Labs.Timesheets.Tests.Seeding
+namespace Labs.Timesheets.Tests.Seeding.Stories
 {
-    public static class JohnDoeStubs
+    public class JohnDoeStory : StoryBase
     {
         public static readonly DateTime Date = new DateTime(2013, 7, 1);
         public static readonly Guid UserId = Guid.NewGuid();
         public static readonly Guid CustomerId = Guid.NewGuid();
         public static readonly string CustomerName = "Rndmzr";
 
-        public static IStorage SeedJackDoe(this IStorage context)
+        public JohnDoeStory(IStorage context)
+            : base(context)
+        {
+        }
+
+        public override void Seed()
+        {
+            SeedUser();
+            SeedCustomers();
+            SeedTags();
+            SeedActivities();
+        }
+
+        private void SeedUser()
         {
             var user = new User(UserId)
                 .ApplyFirstName("John")
@@ -20,31 +33,24 @@ namespace Labs.Timesheets.Tests.Seeding
                 .ApplyUserName("john.doe")
                 .ApplyEmail("john.doe@test.com");
 
-            context.Add(user);
-            context = context
-                .SeedCustomers()
-                .SeedTags()
-                .SeedActivities();
-            return context;
+            Context.Add(user);
         }
 
-        private static IStorage SeedCustomers(this IStorage context)
+        private void SeedCustomers()
         {
             var customer = new Customer(CustomerId)
                 .ApplyName(CustomerName)
                 .ApplyNotes("Hell of a customer");
 
-            context.Add(customer);
-            return context;
+            Context.Add(customer);
         }
 
-        private static IStorage SeedTags(this IStorage context)
+        private void SeedTags()
         {
             // ToDo: Implement stubs;
-            return context;
         }
 
-        private static IStorage SeedActivities(this IStorage context)
+        private void SeedActivities()
         {
             var morning = new DateTime(Date.Year, Date.Month, Date.Day, 8, 0, 0);
 
@@ -83,15 +89,13 @@ namespace Labs.Timesheets.Tests.Seeding
                 .ApplyPeriod(postOnTwitter.End, TimeSpan.FromHours(1.5))
                 .ApplyNotes("Feels like going for a drink i mean pizza");
 
-            context.Add(setupSolution);
-            context.Add(implementTestLayer);
-            context.Add(configureGithub);
-            context.Add(drinkCoffee);
-            context.Add(smokeCigarette);
-            context.Add(postOnTwitter);
-            context.Add(outForLunch);
-
-            return context;
+            Context.Add(setupSolution);
+            Context.Add(implementTestLayer);
+            Context.Add(configureGithub);
+            Context.Add(drinkCoffee);
+            Context.Add(smokeCigarette);
+            Context.Add(postOnTwitter);
+            Context.Add(outForLunch);
         }
     }
 }

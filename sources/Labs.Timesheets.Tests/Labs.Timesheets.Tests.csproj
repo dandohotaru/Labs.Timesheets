@@ -62,14 +62,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Extensions\DebugExtensions.cs" />
+    <Compile Include="Common\FixtureExtensions.cs" />
     <Compile Include="Common\FixtureBase.cs" />
-    <Compile Include="Seeding\JackDoeStubs.cs" />
+    <Compile Include="Seeding\Stories\JackDoeStory.cs" />
+    <Compile Include="Seeding\IStory.cs" />
+    <Compile Include="Seeding\StoryBase.cs" />
     <Compile Include="Tracking\TagTests.cs" />
-    <Compile Include="Tracking\ActivityTests.cs" />
+    <Compile Include="Tracking\SearchActivityTests.cs" />
     <Compile Include="Tracking\CustomerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Seeding\JohnDoeStubs.cs" />
+    <Compile Include="Seeding\Stories\JohnDoeStory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -15,7 +15,7 @@ namespace Labs.Timesheets.Reports.Tracking.Handlers
             Context = context;
         }
 
-        protected IStorage Context { get; set; }
+        protected IStorage Context { get; private set; }
 
         public FindActivitiesByDateResult Handle(FindActivitiesByDateQuery request)
         {
@@ -34,7 +34,7 @@ namespace Labs.Timesheets.Reports.Tracking.Handlers
                                          Notes = activity.Notes,
                                      };
 
-            return new FindActivitiesByDateResult().Add(details);
+            return new FindActivitiesByDateResult(details);
         }
     }
 }

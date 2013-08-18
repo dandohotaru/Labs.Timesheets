@@ -2,9 +2,9 @@
 using System.Collections;
 using System.Text;
 
-namespace Labs.Timesheets.Tests.Common.Extensions
+namespace Labs.Timesheets.Tests.Common
 {
-    public static class DebugExtensions
+    public static class FixtureExtensions
     {
         public static void Dump<T>(this T instance)
         {

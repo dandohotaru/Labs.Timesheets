@@ -5,11 +5,10 @@ using Labs.Timesheets.Data.Mem.Contexts;
 using Labs.Timesheets.Domain.Common.Adapters;
 using Labs.Timesheets.Domain.Common.Handlers;
 using Labs.Timesheets.Reports.Common.Handlers;
-using Labs.Timesheets.Tests.Seeding;
+using Labs.Timesheets.Tests.Seeding.Stories;
 using NUnit.Framework;
 using Ninject;
 using Ninject.Extensions.Conventions;
-using Ninject.Extensions.NamedScope;
 
 namespace Labs.Timesheets.Tests.Common
 {
@@ -19,6 +18,7 @@ namespace Labs.Timesheets.Tests.Common
         protected IResolver Resolver { get; set; }
         protected IReader Reader { get; set; }
         protected IWriter Writer { get; set; }
+        protected IStorage Storage { get; set; }
 
         [TestFixtureSetUp]
         public virtual void FixtureSetUp()
@@ -45,22 +45,32 @@ namespace Labs.Timesheets.Tests.Common
             Resolver = kernel.Get<IResolver>();
             Reader = kernel.Get<IReader>();
             Writer = kernel.Get<IWriter>();
+            Storage = kernel.Get<IStorage>();
         }
 
         [SetUp]
         public virtual void TestSetUp()
         {
-            Resolver
-                .Get<IStorage>()
-                .SeedJohnDoe()
-                .SeedJackDoe()
-                .Save();
+            using (var context = Resolver.Get<IStorage>())
+            {
+                var johnDoeStory = new JohnDoeStory(context);
+                johnDoeStory.Seed();
+
+                var jackDoeStory = new JackDoeStory(context);
+                jackDoeStory.Seed();
+
+                context.Save();
+            }
         }
 
         [TearDown]
         public virtual void TestTearDown()
         {
-            Resolver.Get<IStorage>().Clear();
+            using (var context = Resolver.Get<IStorage>())
+            {
+                context.Clear();
+                context.Save();
+            }
         }
 
         [TestFixtureTearDown]
