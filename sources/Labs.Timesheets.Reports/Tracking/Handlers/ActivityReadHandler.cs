@@ -31,6 +31,7 @@ namespace Labs.Timesheets.Reports.Tracking.Handlers
                                          Id = activity.Id,
                                          Start = activity.Start,
                                          End = activity.End,
+                                         Name = activity.Name,
                                          Notes = activity.Notes,
                                      };
 

@@ -8,21 +8,36 @@ namespace Labs.Timesheets.Domain.Tracking.Entities
 {
     public class Activity : EntityBase
     {
-        public Activity(Guid id) : base(id)
+        public Activity(Guid id) 
+            : base(id)
         {
         }
+
+        public string Name { get; protected set; }
+
+        public string Notes { get; protected set; }
+
+        public IList<Tag> Tags { get; protected set; }
 
         public DateTimeOffset Start { get; protected set; }
 
         public DateTimeOffset End { get; protected set; }
 
-        public IList<Tag> Tags { get; protected set; }
-
-        public string Notes { get; protected set; }
-
         public TimeSpan Duration
         {
             get { return End - Start; }
+        }
+
+        public Activity ApplyName(string name)
+        {
+            Name = name;
+            return this;
+        }
+
+        public Activity ApplyNotes(string notes)
+        {
+            Notes = notes;
+            return this;
         }
 
         public Activity ForTenant(Guid tenantId)
@@ -43,12 +58,6 @@ namespace Labs.Timesheets.Domain.Tracking.Entities
         public Activity ApplyPeriod(DateTimeOffset start, TimeSpan duration)
         {
             ApplyPeriod(start, start.Add(duration));
-            return this;
-        }
-
-        public Activity ApplyNotes(string notes)
-        {
-            Notes = notes;
             return this;
         }
 
@@ -76,6 +85,7 @@ namespace Labs.Timesheets.Domain.Tracking.Entities
                 .AppendFormat("Start: {0}. ", Start.ToLocalTime().TimeOfDay)
                 .AppendFormat("End: {0}. ", End.ToLocalTime().TimeOfDay)
                 .AppendFormat("Duration: {0}. ", Duration.TotalHours)
+                .AppendFormat("Name: {0}. ", Name)
                 .AppendFormat("Notes: {0} ", Notes)
                 .ToString();
         }

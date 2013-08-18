@@ -56,38 +56,45 @@ namespace Labs.Timesheets.Tests.Seeding.Stories
 
             var setupSolution = new Activity(Guid.NewGuid())
                 .ForTenant(UserId)
-                .ApplyPeriod(morning, TimeSpan.FromHours(0.5))
-                .ApplyNotes("Work on configuring the solution");
+                .ApplyName("Setup solution")
+                .ApplyNotes("Work on configuring the solution")
+                .ApplyPeriod(morning, TimeSpan.FromHours(0.5));
 
             var implementTestLayer = new Activity(Guid.NewGuid())
                 .ForTenant(UserId)
-                .ApplyPeriod(setupSolution.End, TimeSpan.FromHours(2))
-                .ApplyNotes("Work on setting up the test layer");
+                .ApplyName("Implement Test Layer")
+                .ApplyNotes("Work on setting up the test layer")
+                .ApplyPeriod(setupSolution.End, TimeSpan.FromHours(2));
 
             var configureGithub = new Activity(Guid.NewGuid())
                 .ForTenant(UserId)
-                .ApplyPeriod(implementTestLayer.End, TimeSpan.FromHours(1))
-                .ApplyNotes("Configure source control with github");
+                .ApplyName("Configure Github")
+                .ApplyNotes("Configure source control with github")
+                .ApplyPeriod(implementTestLayer.End, TimeSpan.FromHours(1));
 
             var drinkCoffee = new Activity(Guid.NewGuid())
                 .ForTenant(UserId)
-                .ApplyPeriod(configureGithub.End, TimeSpan.FromHours(0.25))
-                .ApplyNotes("Hard work today I need a coffee");
+                .ApplyName("Drink coffee")
+                .ApplyNotes("Hard work today I deserve a break")
+                .ApplyPeriod(configureGithub.End, TimeSpan.FromHours(0.25));
 
             var smokeCigarette = new Activity(Guid.NewGuid())
                 .ForTenant(UserId)
-                .ApplyPeriod(drinkCoffee.End, TimeSpan.FromHours(0.25))
-                .ApplyNotes("I know it's bad for my health but i deserve it");
+                .ApplyName("Smoke cigarette")
+                .ApplyNotes("Hard work today I deserve even longer breaks")
+                .ApplyPeriod(drinkCoffee.End, TimeSpan.FromHours(0.25));
 
             var postOnTwitter = new Activity(Guid.NewGuid())
                 .ForTenant(UserId)
-                .ApplyPeriod(smokeCigarette.End, TimeSpan.FromHours(0.5))
-                .ApplyNotes("Praise myself about the great achievements of today");
+                .ApplyName("Post on twitter")
+                .ApplyNotes("Praise myself about the great achievements of today")
+                .ApplyPeriod(smokeCigarette.End, TimeSpan.FromHours(0.5));
 
-            var outForLunch = new Activity(Guid.NewGuid())
+            var outForBeer = new Activity(Guid.NewGuid())
                 .ForTenant(UserId)
-                .ApplyPeriod(postOnTwitter.End, TimeSpan.FromHours(1.5))
-                .ApplyNotes("Feels like going for a drink i mean pizza");
+                .ApplyName("Go out for beer")
+                .ApplyNotes("Must have been an exhausting day feels like going for a beer")
+                .ApplyPeriod(postOnTwitter.End, TimeSpan.FromHours(6.5));
 
             Context.Add(setupSolution);
             Context.Add(implementTestLayer);
@@ -95,7 +102,7 @@ namespace Labs.Timesheets.Tests.Seeding.Stories
             Context.Add(drinkCoffee);
             Context.Add(smokeCigarette);
             Context.Add(postOnTwitter);
-            Context.Add(outForLunch);
+            Context.Add(outForBeer);
         }
     }
 }

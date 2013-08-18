@@ -56,38 +56,45 @@ namespace Labs.Timesheets.Tests.Seeding.Stories
 
             var packSolarCharger = new Activity(Guid.NewGuid())
                 .ForTenant(UserId)
-                .ApplyPeriod(morning, TimeSpan.FromHours(0.5))
-                .ApplyNotes("There is no way I am leaving without a solar charger");
+                .ApplyName("Pack solar charger")
+                .ApplyNotes("There is no way I am leaving without a solar charger")
+                .ApplyPeriod(morning, TimeSpan.FromHours(0.5));
 
             var packTrekingBoots = new Activity(Guid.NewGuid())
                 .ForTenant(UserId)
-                .ApplyPeriod(packSolarCharger.End, TimeSpan.FromHours(2))
-                .ApplyNotes("Have you seen those leaches as big as my cat");
+                .ApplyName("Pack treking boots")
+                .ApplyNotes("Have you seen those leaches as big as my cat")
+                .ApplyPeriod(packSolarCharger.End, TimeSpan.FromHours(2));
 
             var packToothbrush = new Activity(Guid.NewGuid())
                 .ForTenant(UserId)
-                .ApplyPeriod(packTrekingBoots.End, TimeSpan.FromHours(0.5))
-                .ApplyNotes("Sharing is carrying but not this one");
+                .ApplyName("Pack toothbrush")
+                .ApplyNotes("Sharing is carrying but not this one")
+                .ApplyPeriod(packTrekingBoots.End, TimeSpan.FromHours(0.5));
 
             var packHammock = new Activity(Guid.NewGuid())
                 .ForTenant(UserId)
-                .ApplyPeriod(packToothbrush.End, TimeSpan.FromHours(0.25))
-                .ApplyNotes("For the lazy afternoons");
+                .ApplyName("Pack hammock")
+                .ApplyNotes("For the lazy afternoons")
+                .ApplyPeriod(packToothbrush.End, TimeSpan.FromHours(0.25));
 
             var packKindle = new Activity(Guid.NewGuid())
                 .ForTenant(UserId)
-                .ApplyPeriod(packHammock.End, TimeSpan.FromHours(0.25))
-                .ApplyNotes("See previous activity");
+                .ApplyName("Pack kindle")
+                .ApplyNotes("See previous activity")
+                .ApplyPeriod(packHammock.End, TimeSpan.FromHours(0.25));
 
             var postOnTwitter = new Activity(Guid.NewGuid())
                 .ForTenant(UserId)
-                .ApplyPeriod(packKindle.End, TimeSpan.FromHours(0.5))
-                .ApplyNotes("Praise myself about the great future journey");
+                .ApplyName("Post on twitter")
+                .ApplyNotes("Praise myself about the great future journey")
+                .ApplyPeriod(packKindle.End, TimeSpan.FromHours(0.5));
 
             var exitStageLeft = new Activity(Guid.NewGuid())
                 .ForTenant(UserId)
-                .ApplyPeriod(postOnTwitter.End, TimeSpan.FromHours(9.5))
-                .ApplyNotes("Need to drink with friends first");
+                .ApplyName("Exit stage left")
+                .ApplyNotes("Need to drink with friends first")
+                .ApplyPeriod(postOnTwitter.End, TimeSpan.FromHours(9.5));
 
             Context.Add(packSolarCharger);
             Context.Add(packTrekingBoots);
