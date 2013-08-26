@@ -21,8 +21,8 @@ namespace Labs.Timesheets.Reports.Tracking.Handlers
         {
             var query = from activity in Context.Query<Activity>()
                         where activity.TenantId == request.TenantId
-                        where activity.Start.Date <= request.Reference.Date
-                              && activity.End.Date >= request.Reference.Date
+                        where activity.Start.Date <= request.Date
+                              && activity.End.Date >= request.Date
                         select activity;
 
             var details = from activity in query

@@ -4,6 +4,6 @@ namespace Labs.Timesheets.Adapters.Dispatchers
 {
     public interface IReader
     {
-        TResult Fetch<TResult>(IQuery<TResult> query) where TResult : IResult;
+        TResult Search<TResult>(IQuery<TResult> query) where TResult : IResult;
     }
 }

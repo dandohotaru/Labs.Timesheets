@@ -15,10 +15,10 @@ namespace Labs.Timesheets.Tests.Tracking
             // Given
             var query = new FindActivitiesByDateQuery()
                 .ForTenant(JohnDoeStory.UserId)
-                .ForReference(JohnDoeStory.Date);
+                .ForDate(JohnDoeStory.Date);
 
             // When
-            var result = Reader.Fetch(query);
+            var result = Reader.Search(query);
 
             // Then
             Assert.That(result, Is.Not.Null);

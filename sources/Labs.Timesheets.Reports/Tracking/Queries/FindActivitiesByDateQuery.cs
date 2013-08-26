@@ -8,11 +8,11 @@ namespace Labs.Timesheets.Reports.Tracking.Queries
 {
     public class FindActivitiesByDateQuery : QueryBase<FindActivitiesByDateQuery, FindActivitiesByDateResult>
     {
-        public DateTimeOffset Reference { get; protected set; }
+        public DateTimeOffset Date { get; protected set; }
 
-        public FindActivitiesByDateQuery ForReference(DateTimeOffset date)
+        public FindActivitiesByDateQuery ForDate(DateTimeOffset date)
         {
-            Reference = date;
+            Date = date;
             return this;
         }
     }

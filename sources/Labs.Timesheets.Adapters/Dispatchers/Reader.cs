@@ -18,7 +18,7 @@ namespace Labs.Timesheets.Adapters.Dispatchers
 
         protected IResolver Resolver { get; private set; }
 
-        public TResult Fetch<TResult>(IQuery<TResult> query) where TResult : IResult
+        public TResult Search<TResult>(IQuery<TResult> query) where TResult : IResult
         {
             using (Context())
             {

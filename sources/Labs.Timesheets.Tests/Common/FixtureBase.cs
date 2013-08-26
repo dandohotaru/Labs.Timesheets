@@ -18,7 +18,6 @@ namespace Labs.Timesheets.Tests.Common
         protected IResolver Resolver { get; set; }
         protected IReader Reader { get; set; }
         protected IWriter Writer { get; set; }
-        protected IStorage Storage { get; set; }
 
         [TestFixtureSetUp]
         public virtual void FixtureSetUp()
@@ -45,7 +44,6 @@ namespace Labs.Timesheets.Tests.Common
             Resolver = kernel.Get<IResolver>();
             Reader = kernel.Get<IReader>();
             Writer = kernel.Get<IWriter>();
-            Storage = kernel.Get<IStorage>();
         }
 
         [SetUp]

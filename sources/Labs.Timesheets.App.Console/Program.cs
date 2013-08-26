@@ -49,7 +49,7 @@ namespace Labs.Timesheets.App.Console
             var findProjectQuery = new FindTagsByIdsQuery()
                 .AddTagId(projectId);
             var project = reader
-                .Fetch(findProjectQuery);
+                .Search(findProjectQuery);
             if (project == null)
                 throw new Exception("The tag could not be found based on id");
         }
