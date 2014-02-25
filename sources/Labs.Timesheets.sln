@@ -17,13 +17,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labs.Timesheets.Data.Rdb", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labs.Timesheets.Data.Mem", "Labs.Timesheets.Data.Mem\Labs.Timesheets.Data.Mem.csproj", "{079B8EAE-D660-43A0-B3B6-76C9BE5B724B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F171E8CB-49C2-445E-A186-4C136EECB869}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{F171E8CB-49C2-445E-A186-4C136EECB869}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labs.Timesheets.Domain", "Labs.Timesheets.Domain\Labs.Timesheets.Domain.csproj", "{EC7E9761-15D4-4113-B8AB-702598F501D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labs.Timesheets.Reports", "Labs.Timesheets.Reports\Labs.Timesheets.Reports.csproj", "{DFB0E46D-2FE8-48A0-8324-EA0018E19C7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labs.Timesheets.Common", "Labs.Timesheets.Common\Labs.Timesheets.Common.csproj", "{8DF4EC9D-FD36-4411-BB83-372A3C1EE4E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labs.Extensions", "Labs.Timesheets.Common\Labs.Extensions.csproj", "{8DF4EC9D-FD36-4411-BB83-372A3C1EE4E3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labs.Timesheets.Adapters", "Labs.Timesheets.Adapters\Labs.Timesheets.Adapters.csproj", "{3CC5116E-553A-4BA8-A7D2-902457912E84}"
 EndProject

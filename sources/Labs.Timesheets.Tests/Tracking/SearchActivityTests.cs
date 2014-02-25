@@ -1,24 +1,27 @@
 ﻿using System.Linq;
-using Labs.Timesheets.Reports.Tracking.Queries;
+using Labs.Extensions;
+using Labs.Timesheets.Reports.Messages;
 using Labs.Timesheets.Tests.Common;
-using Labs.Timesheets.Tests.Seeding.Stories;
+using Labs.Timesheets.Tests.Seeding;
 using NUnit.Framework;
 
 namespace Labs.Timesheets.Tests.Tracking
 {
     [TestFixture]
-    public class SearchActivityTests : FixtureBase
+    public class SearchActivityTests : Fixture
     {
         [Test]
         public void ShouldReturnActivitiesWhenActivitiesAreSearchedByDate()
         {
             // Given
             var query = new FindActivitiesByDateQuery()
-                .ForTenant(JohnDoeStory.UserId)
-                .ForDate(JohnDoeStory.Date);
+                {
+                    TenantId = JohnDoeStory.UserId,
+                    Date = JohnDoeStory.Date,
+                };
 
             // When
-            var result = Reader.Search(query);
+            var result = Querier.Search(query);
 
             // Then
             Assert.That(result, Is.Not.Null);

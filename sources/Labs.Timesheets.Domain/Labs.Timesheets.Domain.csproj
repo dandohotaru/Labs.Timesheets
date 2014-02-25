@@ -40,42 +40,59 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Commands\CommandBase.cs" />
-    <Compile Include="Common\Commands\ICommand.cs" />
-    <Compile Include="Common\Entities\IEntity.cs" />
-    <Compile Include="Common\Events\EventBase.cs" />
-    <Compile Include="Common\Events\IEvent.cs" />
-    <Compile Include="Common\Exceptions\BusinessException.cs" />
-    <Compile Include="Common\Exceptions\StorageException.cs" />
-    <Compile Include="Common\Handlers\IWriteHandler.cs" />
-    <Compile Include="Common\Entities\EntityBase.cs" />
-    <Compile Include="Common\Adapters\IStorage.cs" />
-    <Compile Include="Common\Values\DateRange.cs" />
-    <Compile Include="Common\Values\IValue.cs" />
-    <Compile Include="Common\Values\TimeRange.cs" />
-    <Compile Include="Security\Entities\User.cs" />
-    <Compile Include="Tracking\Commands\AddActivityCommand.cs" />
-    <Compile Include="Tracking\Commands\ModifyCustomerCommand.cs" />
-    <Compile Include="Tracking\Commands\AddTagCommand.cs" />
-    <Compile Include="Tracking\Commands\AddCustomerCommand.cs" />
-    <Compile Include="Tracking\Commands\ModifyActivityCommand.cs" />
-    <Compile Include="Tracking\Commands\ModifyTagCommand.cs" />
-    <Compile Include="Tracking\Commands\RemoveActivityCommand.cs" />
-    <Compile Include="Tracking\Commands\RemoveTagCommand.cs" />
-    <Compile Include="Tracking\Commands\RemoveCustomerCommand.cs" />
-    <Compile Include="Tracking\Entities\Activity.cs" />
-    <Compile Include="Tracking\Entities\Customer.cs" />
-    <Compile Include="Tracking\Entities\Tag.cs" />
-    <Compile Include="Tracking\Handlers\CustomerWriteHandler.cs" />
-    <Compile Include="Tracking\Handlers\TagWriteHandler.cs" />
-    <Compile Include="Tracking\Handlers\ActivityWriteHandler.cs" />
+    <Compile Include="Commands\RemoveTagCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\Command.cs" />
+    <Compile Include="Common\ICommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\IEntity.cs" />
+    <Compile Include="Common\Event.cs" />
+    <Compile Include="Common\IEvent.cs" />
+    <Compile Include="Common\IHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\IWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Customer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Tag.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Exceptions\BusinessException.cs" />
+    <Compile Include="Exceptions\StorageException.cs" />
+    <Compile Include="Common\Entity.cs" />
+    <Compile Include="Handlers\CustomerWriteHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ICommander.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Values\DateRange.cs" />
+    <Compile Include="Common\IValue.cs" />
+    <Compile Include="Values\TimeRange.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Commands\AddActivityCommand.cs" />
+    <Compile Include="Commands\ModifyCustomerCommand.cs" />
+    <Compile Include="Commands\AddTagCommand.cs" />
+    <Compile Include="Commands\AddCustomerCommand.cs" />
+    <Compile Include="Commands\ModifyActivityCommand.cs" />
+    <Compile Include="Commands\ModifyTagCommand.cs" />
+    <Compile Include="Commands\RemoveActivityCommand.cs" />
+    <Compile Include="Commands\RemoveCustomerCommand.cs" />
+    <Compile Include="Entities\Activity.cs" />
+    <Compile Include="Handlers\TagWriteHandler.cs" />
+    <Compile Include="Handlers\ActivityWriteHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\Labs.Timesheets.Common\Labs.Timesheets.Common.csproj">
+    <ProjectReference Include="..\Labs.Timesheets.Common\Labs.Extensions.csproj">
       <Project>{8df4ec9d-fd36-4411-bb83-372a3c1ee4e3}</Project>
-      <Name>Labs.Timesheets.Common</Name>
+      <Name>Labs.Extensions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

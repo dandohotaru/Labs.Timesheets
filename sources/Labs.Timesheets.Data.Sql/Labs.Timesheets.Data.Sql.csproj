@@ -32,8 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -46,24 +50,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contexts\SqlStorage.cs" />
+    <Compile Include="Read\SqlReader.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Write\SqlWriter.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Mappings\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="About.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Labs.Timesheets.Common\Labs.Timesheets.Common.csproj">
-      <Project>{8df4ec9d-fd36-4411-bb83-372a3c1ee4e3}</Project>
-      <Name>Labs.Timesheets.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Labs.Timesheets.Domain\Labs.Timesheets.Domain.csproj">
       <Project>{ec7e9761-15d4-4113-b8ab-702598f501d3}</Project>
       <Name>Labs.Timesheets.Domain</Name>

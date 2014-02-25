@@ -1,3 +1,0 @@
-﻿
-About
-* Entity Framework implementation of a storage adapter

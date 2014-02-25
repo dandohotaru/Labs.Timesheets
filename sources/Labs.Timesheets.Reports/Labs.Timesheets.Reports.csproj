@@ -39,32 +39,73 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Queries\IQuery.cs" />
-    <Compile Include="Common\Queries\IResult.cs" />
-    <Compile Include="Common\Queries\QueryBase.cs" />
-    <Compile Include="Common\Queries\ResultBase.cs" />
-    <Compile Include="Tracking\Handlers\TagReadHandler.cs" />
-    <Compile Include="Tracking\Handlers\ActivityReadHandler.cs" />
-    <Compile Include="Tracking\Handlers\CustomerReadHandler.cs" />
-    <Compile Include="Common\Handlers\IReadHandler.cs" />
+    <Compile Include="Common\IModel.cs" />
+    <Compile Include="Common\Entity.cs" />
+    <Compile Include="Common\IEntity.cs" />
+    <Compile Include="Common\IHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\IReader.cs" />
+    <Compile Include="Common\Result.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Activity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\Customer.cs" />
+    <Compile Include="Entities\Tag.cs" />
+    <Compile Include="Common\IQuery.cs" />
+    <Compile Include="Common\IResult.cs" />
+    <Compile Include="Common\Query.cs" />
+    <Compile Include="Handlers\CustomerReadHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Handlers\TagReadHandler.cs" />
+    <Compile Include="Handlers\ActivityReadHandler.cs" />
+    <Compile Include="IQuerier.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Messages\FindActivitiesByDateQuery.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Messages\FindActivitiesByDateResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Messages\FindCustomerByIdQuery.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Messages\FindCustomerByIdResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Messages\FindCustomersByTextQuery.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Messages\FindCustomersByTextResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Messages\FindTagsByIdsQuery.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Messages\FindTagsByIdsResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Messages\FindTagsByTextQuery.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Messages\FindTagsByTextResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\TagModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tracking\Models\ActivityInfo.cs" />
-    <Compile Include="Tracking\Models\TagInfo.cs" />
-    <Compile Include="Tracking\Models\CustomerInfo.cs" />
-    <Compile Include="Tracking\Queries\FindActivitiesByDateQuery.cs" />
-    <Compile Include="Tracking\Queries\FindTagsByIdsQuery.cs" />
-    <Compile Include="Tracking\Queries\FindTagsByTextQuery.cs" />
-    <Compile Include="Tracking\Queries\FindCustomerByIdQuery.cs" />
-    <Compile Include="Tracking\Queries\FindCustomersByTextQuery.cs" />
+    <Compile Include="Models\ActivityModel.cs" />
+    <Compile Include="Models\CustomerModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Labs.Timesheets.Common\Labs.Timesheets.Common.csproj">
+    <ProjectReference Include="..\Labs.Timesheets.Common\Labs.Extensions.csproj">
       <Project>{8df4ec9d-fd36-4411-bb83-372a3c1ee4e3}</Project>
-      <Name>Labs.Timesheets.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Labs.Timesheets.Domain\Labs.Timesheets.Domain.csproj">
-      <Project>{ec7e9761-15d4-4113-b8ab-702598f501d3}</Project>
-      <Name>Labs.Timesheets.Domain</Name>
+      <Name>Labs.Extensions</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
