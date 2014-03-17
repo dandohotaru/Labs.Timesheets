@@ -27,7 +27,7 @@ namespace Labs.Timesheets.Data.Sql.Read
 
         public IQueryable<TEntity> Query<TEntity>() where TEntity : class, IEntity
         {
-            return Set<TEntity>();
+            return Set<TEntity>().AsNoTracking();
         }
     }
 }

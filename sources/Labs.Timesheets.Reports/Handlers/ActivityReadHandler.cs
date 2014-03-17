@@ -18,10 +18,13 @@ namespace Labs.Timesheets.Reports.Handlers
 
         public FindActivitiesByDateResult Handle(FindActivitiesByDateQuery request)
         {
+            var start = request.Date;
+            var end = request.Date.AddDays(1);
+
             var query = from activity in Context.Query<Activity>()
                         where activity.TenantId == request.TenantId
-                        where activity.Start <= request.Date
-                              && activity.End >= request.Date
+                        where activity.Start >= start
+                              && activity.End <= end
                         select activity;
 
             var details = from activity in query
